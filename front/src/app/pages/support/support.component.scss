@@ -12,9 +12,11 @@ i {
     }
 }
 
-.modal,
-.modal-header {
+.modal {
     text-align: right;
+    .modal-header {
+        background-color: #f6f9fc
+    }
 }
 
 .modal-header .btn-close {

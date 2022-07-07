@@ -1,14 +1,11 @@
 //
 // Form validation
 //
-
 // Validation
-
 .has-success,
 .has-danger {
     position: relative;
-
-    &:after, {
+    &:after {
         width: 19px;
         height: 19px;
         line-height: 19px;
@@ -31,17 +28,12 @@
         color: daken($form-feedback-valid-color, 18%);
         background-color: $form-feedback-valid-bg;
     }
-    
     .form-control {
         background-color: $input-focus-bg;
-
         &:focus {
             border-color: $input-focus-border-color;
         }
-
-
         // Placeholder
-
         &::placeholder {
             color: $form-feedback-valid-color;
         }
@@ -54,16 +46,12 @@
         color: daken($form-feedback-invalid-color, 18%);
         background-color: $form-feedback-invalid-bg;
     }
-
     .form-control {
         background-color: $input-focus-bg;
-
         &:focus {
             border-color: $input-focus-border-color;
         }
-
         // Placeholder
-
         &::placeholder {
             color: $form-feedback-invalid-color;
         }
