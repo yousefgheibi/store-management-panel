@@ -1,16 +1,10 @@
 import Chart from 'chart.js';
-//
-// Chart extension for making the bars rounded
-// Code from: https://codepen.io/jedtrow/full/ygRYgo
-//
 
 Chart.elements.Rectangle.prototype.draw = function() {
   var ctx = this._chart.ctx;
   var vm = this._view;
   var left, right, top, bottom, signX, signY, borderSkipped, radius;
   var borderWidth = vm.borderWidth;
-  // Set Radius Here
-  // If radius is large enough to cause drawing errors a max radius is imposed
   var cornerRadius = 6;
 
   if (!vm.horizontal) {
@@ -67,10 +61,10 @@ Chart.elements.Rectangle.prototype.draw = function() {
   // Corner points, from bottom-left to bottom-right clockwise
   // | 1 2 |
   // | 0 3 |
-  var corners = [[left, bottom], [left, top], [right, top], [right, bottom]];
+  var corners = [[right, bottom], [right, top], [left, top],[left, bottom]];
 
   // Find first (starting) corner with fallback to 'bottom'
-  var borders = ["bottom", "left", "top", "right"];
+  var borders = ["right","top","left","bottom"];
   var startCorner = borders.indexOf(borderSkipped, 0);
   if (startCorner === -1) {
     startCorner = 0;
@@ -127,7 +121,7 @@ Chart.elements.Rectangle.prototype.draw = function() {
 
 var mode = 'light';//(themeMode) ? themeMode : 'light';
 var fonts = {
-  base: 'Open Sans'
+  base: 'irsans'
 }
 
 // Colors
@@ -168,7 +162,7 @@ export function chartOptions() {
         defaultColor: (mode == 'dark') ? colors.gray[700] : colors.gray[600],
         defaultFontColor: (mode == 'dark') ? colors.gray[700] : colors.gray[600],
         defaultFontFamily: fonts.base,
-        defaultFontSize: 13,
+        defaultFontSize: 12,
         layout: {
           padding: 0
         },
@@ -295,7 +289,7 @@ export const chartExample1 = {
         ticks: {
           callback: function(value) {
             if (!(value % 10)) {
-              return '$' + value + 'k';
+              return (value) + ' میلیون';
             }
           }
         }
@@ -303,10 +297,11 @@ export const chartExample1 = {
     }
   },
   data: {
-    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: ['اسفند', 'بهمن', 'دی', 'آذر', 'آبان', 'مهر', 'شهریور', 'مرداد', 'تیر', 'خرداد', 'اردیبهشت', 'فروردین'],
+   
     datasets: [{
-      label: 'Performance',
-      data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+      label: 'فروش',
+      data: [0, 20, 10, 30, 15, 40,21,53,32, 20, 60, 60]
     }]
   }
 }

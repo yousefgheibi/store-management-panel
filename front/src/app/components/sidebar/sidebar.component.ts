@@ -12,9 +12,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/people', title: 'اشخاص',  icon: 'fa-users text-info', class: '' },
     { path: '/product', title: 'کالا و خدمات',  icon: 'fa-barcode text-danger', class: '' },
     { path: '/banking', title: 'بانکداری',  icon: 'fa-credit-card text-primary', class: '' },
-    { path: '/buy-and-sell', title: 'خرید و فروش',  icon: 'fa-chart-pie text-success', class: '' },
-    { path: '/receive-and-pay', title: 'دریافت و پرداخت',  icon: 'fa-shopping-cart text-dark', class: '' },
-    { path: '/income-and-expenses', title: 'درآمد و هزینه',  icon: 'fa-percent text-warning', class: '' },
+    { path: '/buy-and-sell', title: 'ثبت فاکتور',  icon: 'fa-chart-pie text-success', class: '' },
+    { path: '/income-and-expenses', title: 'حسابداری',  icon: 'fa-percent text-warning', class: '' },
     { path: '/support', title: 'پشتیانی',  icon: 'fa-cog text-primary', class: '' }
 ];
 

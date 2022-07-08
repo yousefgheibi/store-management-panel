@@ -1,35 +1,29 @@
 //
 // Nav pills
 //
-
-
 // General styles
-
 .nav-pills {
     .nav-item:not(:last-child) {
-        padding-right: $nav-pills-space-x;
+        padding-left: $nav-pills-space-x;
     }
-
     .nav-link {
-    	padding: $nav-pills-padding-y $nav-pills-padding-x;
+        padding: $nav-pills-padding-y $nav-pills-padding-x;
         color: $nav-pills-link-color;
         font-weight: 500;
         font-size: $font-size-sm;
         box-shadow: $nav-pills-box-shadow;
         background-color: $nav-pills-bg;
         transition: $transition-base;
-
         &:hover {
-        	color: $nav-pills-link-hover-color;
+            background: $nav-pills-link-hover-color;
+            color: $nav-pills-bg;
         }
     }
-
     .nav-link.active,
-    .show > .nav-link {
-        color: $nav-pills-link-active-color;
-        background-color: $nav-pills-link-active-bg;
+    .show>.nav-link {
+        background: $nav-pills-link-hover-color;
+        color: $nav-pills-bg;
     }
-
     @include media-breakpoint-down(xs) {
         .nav-item {
             margin-bottom: $spacer;
@@ -45,9 +39,7 @@
     }
 }
 
-
 // Rounded circle nav pills
-
 .nav-pills-circle {
     .nav-link {
         text-align: center;
@@ -57,9 +49,9 @@
         line-height: 60px;
         border-radius: 50%;
     }
-
     .nav-link-icon {
-        i, svg {
+        i,
+        svg {
             font-size: 1rem;
         }
     }
