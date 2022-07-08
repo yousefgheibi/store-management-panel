@@ -40,7 +40,7 @@
                                     1401/03/29
                                 </td>
                                 <td>
-                                    <a><i class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                    <a><i data-bs-toggle="modal" data-bs-target="#seeModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             <tr>
@@ -107,6 +107,45 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="seeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">1401/03/29</h5>
+                <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="title">عنوان</label>
+                                <p>تست</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-last-name">واحد مربوطه</label>
+                                <p>پشتیبانی</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="form-control-label">پیام</label>
+                            <p>تست</p>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
