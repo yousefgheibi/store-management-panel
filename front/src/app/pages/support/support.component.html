@@ -14,7 +14,7 @@
                             <h3 class="mb-0">لیست پیام های ارسالی</h3>
                         </div>
                         <div class="col text-left">
-                            <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">ارسال پیام جدید</a>
+                            <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createMessageModal">ارسال پیام جدید</a>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                                     1401/03/29
                                 </td>
                                 <td>
-                                    <a><i data-bs-toggle="modal" data-bs-target="#seeModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             <tr>
@@ -108,11 +108,11 @@
 </div>
 
 
-<div class="modal fade" id="seeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">1401/03/29</h5>
+                <h5 class="modal-title">1401/03/29</h5>
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">
@@ -120,13 +120,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="title">عنوان</label>
+                                <label class="form-control-label">عنوان</label>
                                 <p>تست</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-last-name">واحد مربوطه</label>
+                                <label class="form-control-label">واحد مربوطه</label>
                                 <p>پشتیبانی</p>
                             </div>
                         </div>
@@ -147,11 +147,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createMessageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ارسال پیام جدید</h5>
+                <h5 class="modal-title">ارسال پیام جدید</h5>
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">
@@ -159,14 +159,14 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="title">عنوان</label>
-                                <input type="text" id="title" class="form-control" placeholder="تست">
+                                <label class="form-control-label">عنوان</label>
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-last-name">واحد مربوطه</label>
-                                <select class="form-select form-control" aria-label="Default select example">
+                                <label class="form-control-label">واحد مربوطه</label>
+                                <select class="form-select form-control">
                                         <option selected>لطفا یکی را اتخاب کنید.</option>
                                         <option value="1">پشتیبانی</option>
                                         <option value="2">مالی</option>
