@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 
-// core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-} from "../../variables/charts";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -23,28 +18,68 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-    this.data = this.datasets[0];
-
-
-    parseOptions(Chart, chartOptions());
-
-    var chartSales = document.getElementById('chart-sales');
-
-    this.salesChart = new Chart(chartSales, {
-			type: 'line',
-			options: chartExample1.options,
-			data: chartExample1.data
-		});
+    const labels = ['اسفند', 'بهمن','دی','آذر','آبان','مهر','شهریور','مرداد','تیر','خرداد','اردیبهشت','فروردین'];
+    const ctx = (document.getElementById('liner-chart') as HTMLCanvasElement)?.getContext('2d');
+    const liner = new Chart(ctx, {
+      type: 'line',
+      data : this.data = {
+        labels: labels,
+        datasets: [
+          {
+            label: 'هزینه',
+            data: [65, 59, 80, 81, 56, 85, 40,24,72,61,55,84],
+            fill: false,
+            borderColor: '#11CDEF',
+            tension: 0.1
+          },
+          {
+            label: 'درآمد',
+            data: [65, 59, 80, 81, 56, 55, 40,24,22,61,52,34],
+            fill: false,
+            borderColor: '#FFD600',
+            tension: 0.1
+          },
+          {
+          label: 'خرید',
+          data: [15, 21, 30, 81, 56, 55, 40,24,22,53,25,34],
+          fill: false,
+          borderColor: '#FB6340',
+          tension: 0.1
+        },
+        {
+          label: 'فروش',
+          data: [6, 13, 20, 13, 26, 51, 40,24,22,21,55,44],
+          fill: false,
+          borderColor: '#F5365C',
+          tension: 0.1
+        }
+      
+      ]
+      },
+      options: {
+        responsive: true,
+        rtl: true,
+        plugins: {
+          legend: {
+            position: 'right',
+            labels :{
+              family: 'irsans'
+            }
+          }
+          
+        },
+        scales: {
+          xAxes: [{
+              ticks: {
+                  autoSkip: false,
+                  maxRotation: 90,
+                  minRotation: 90
+              },
+        position: 'right',
+          }]
+      },
+      // reverse:true
+      },
+    });
   }
-
-
-  public updateOptions() {
-    this.salesChart.data.datasets[0].data = this.data;
-    this.salesChart.update();
-  }
-
 }

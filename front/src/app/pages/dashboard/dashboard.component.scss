@@ -7,3 +7,12 @@ td {
     font-size: 12px;
     text-align: right;
 }
+
+.bg-gradient-danger1 {
+    background-color: #FAACA8;
+    background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+}
+
+canvas {
+    width: 100%;
+}
