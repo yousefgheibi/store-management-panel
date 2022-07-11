@@ -1,1 +1,144 @@
-<p>product works!</p>
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 150px;">
+    <!-- Mask -->
+    <span class="mask bg-gradient"></span>
+
+
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col-12 mb-5 mb-xl-0">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col text-right">
+                            <h3 class="mb-0">لیست کالا و خدمات</h3>
+                        </div>
+                        <div class="col text-left">
+                            <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">کالا و خدمات جدید</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">کد</th>
+                                <th scope="col">دسته بندی</th>
+                                <th scope="col">نام</th>
+                                <th scope="col">واحد اصلی</th>
+                                <th scope="col">قیمت خرید</th>
+                                <th scope="col">قیمت فروش</th>
+                                <th scope="col">موجودی</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    1
+                                </th>
+                                <td>
+                                    g-21
+                                </td>
+                                <td>
+                                    کالا
+                                </td>
+                                <td>
+                                    گوشی glx
+                                </td>
+                                <td>
+                                    عدد
+                                </td>
+                                <td>
+                                    3,200,000 تومان
+                                </td>
+                                <td>
+                                    3,500,000 تومان
+                                </td>
+                                <td>
+                                    5
+                                </td>
+
+                                <td>
+                                    <a data-bs-toggle="modal" data-bs-target="#createProductModal"><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="createProductModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">کالا و خدمات جدید</h5>
+                <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">کد</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">دسته بندی</label>
+                                <select class="form-select form-control">
+                                        <option value="1" selected>کالا</option>
+                                        <option value="2">خدمات</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-control-label">نام</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">قیمت خرید</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">قیمت فروش</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">واحد اصلی</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">تعداد</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">لغو</button>
+                <button type="button" class="btn btn-sm btn-primary">ارسال پیام</button>
+            </div>
+        </div>
+    </div>
+</div>
