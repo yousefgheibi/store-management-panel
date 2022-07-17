@@ -1,27 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
-
-@font-face {
-    font-family: irsans;
-    src: url(./assets/fonts/irsans.ttf);
-}
-
-*:not(i) {
-    font-family: irsans !important;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.form-control {
-    color: #444 !important;
-}
-
-.bg-gradient {
-    background-color: #FAACA8;
-    background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
-}
-
-.text-yellow {
-    color: #eae049;
-}
+    /* You can add global styles to this file, and also import other style files */
+    
+    @font-face {
+        font-family: irsans;
+        src: url(./assets/fonts/irsans.ttf);
+    }
+    
+    *:not(i) {
+        font-family: irsans !important;
+    }
+    
+    .text-right {
+        text-align: right;
+    }
+    
+    .form-control {
+        color: #444 !important;
+    }
+    
+    .bg-gradient {
+        background-color: #FAACA8;
+        background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+    }
+    
+    .text-yellow {
+        color: #eae049;
+    }
+    
+    .search-input {
+        width: 200px;
+        margin-left: 10px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 12px;
+        transition: all 300ms ease;
+        &:focus,
+        &:hover {
+            outline: 0px;
+            border: 1px solid #E1D0E8;
+        }
+    }
+    
+    .text-left {
+        .btn {
+            margin-bottom: -3px;
+        }
+    }
+    
+    .modal-footer {
+        padding-top: 0px !important;
+    }
