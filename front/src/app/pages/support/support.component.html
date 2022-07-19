@@ -6,6 +6,20 @@
 </div>
 <div class="container-fluid mt--7">
     <div class="row">
+        <div class="col-12 mb-3">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-8 col-md-10">
+                            <input type="search" class="search-input" placeholder="جستجو" />
+                        </div>
+                        <div class="col-4 col-md-2">
+                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createMessageModal">جدید</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-12 mb-5 mb-xl-0">
             <div class="card shadow">
                 <div class="card-header border-0">
@@ -13,16 +27,13 @@
                         <div class="col text-right">
                             <h3 class="mb-0">لیست پیام های ارسالی</h3>
                         </div>
-                        <div class="col text-left">
-                            <input type="search" class="search-input" />
-                            <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createMessageModal">ارسال پیام جدید</a>
-                        </div>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
+                                <th scope="col">#</th>
                                 <th scope="col">عنوان</th>
                                 <th scope="col">واحد مربوطه</th>
                                 <th scope="col">تاریخ ثبت</th>
@@ -32,8 +43,11 @@
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    تست
+                                    1
                                 </th>
+                                <td>
+                                    تست
+                                </td>
                                 <td>
                                     پشتیبانی
                                 </td>
@@ -42,62 +56,6 @@
                                 </td>
                                 <td>
                                     <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    تست
-                                </th>
-                                <td>
-                                    پشتیبانی
-                                </td>
-                                <td>
-                                    1401/03/29
-                                </td>
-                                <td>
-                                    <a><i class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    تست
-                                </th>
-                                <td>
-                                    پشتیبانی
-                                </td>
-                                <td>
-                                    1401/03/29
-                                </td>
-                                <td>
-                                    <a><i class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    تست
-                                </th>
-                                <td>
-                                    پشتیبانی
-                                </td>
-                                <td>
-                                    1401/03/29
-                                </td>
-                                <td>
-                                    <a><i class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    تست
-                                </th>
-                                <td>
-                                    پشتیبانی
-                                </td>
-                                <td>
-                                    1401/03/29
-                                </td>
-                                <td>
-                                    <a><i class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -168,8 +126,7 @@
                             <div class="form-group">
                                 <label class="form-control-label">واحد مربوطه</label>
                                 <select class="form-select form-control">
-                                        <option selected>لطفا یکی را اتخاب کنید.</option>
-                                        <option value="1">پشتیبانی</option>
+                                        <option value="1" selected>پشتیبانی</option>
                                         <option value="2">مالی</option>
                                         <option value="3">فروش</option>
                                       </select>
