@@ -9,325 +9,393 @@
         <div class="col-12 mb-3">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <div class="row align-items-center">
-                        <ul class="nav nav-pills w-100 px-2" id="pills-tab" role="tablist">
-                            <li class="nav-item w-50" role="presentation">
-                                <button class="btn nav-link w-100 active" id="pills-buy-tab" data-bs-toggle="pill" data-bs-target="#pills-buy" type="button" role="tab" aria-selected="true">خرید</button>
-                            </li>
-                            <li class="nav-item w-50" role="presentation">
-                                <button class="btn nav-link w-100" id="pills-sell-tab" data-bs-toggle="pill" data-bs-target="#pills-sell" type="button" role="tab" aria-selected="false">فروش</button>
-                            </li>
-                        </ul>
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-8 col-md-10">
+                            <input type="search" class="search-input" placeholder="جستجو" />
+                        </div>
+                        <div class="col-4 col-md-2">
+                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createProductModal">جدید</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-12 mb-5 mb-xl-0">
             <div class="card shadow">
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active py-3" id="pills-buy" role="tabpanel" aria-labelledby="pills-buy-tab">
-                        <div class="container">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">فروشنده</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                    <option selected value="1">امیر غیبی</option>
-                                                  </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">تاریخ</label>
-                                            <input type="text" value="1401/02/21" class="form-control" readonly>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">عنوان</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="mt-1 mb-3">
-                                <div class="row">
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">دسته بندی</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                    <option selected value="1">کالا</option>
-                                                    <option value="2">خدمت</option>
-                                                  </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">کد</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">نام</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">واحد</label>
-                                            <input type="text" class="form-control" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">قیمت</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">تعداد</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row justify-content-between">
-                                    <div class="col-3 text-right">
-                                        <button class="btn btn-danger">اضافه کردن به سبد</button>
-                                    </div>
-                                    <div class="col-3 text-left">
-                                        0 تومان
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div class="table-responsive mt-4">
-                                <table class="table align-items-center table-flush">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">کد</th>
-                                            <th scope="col">دسته بندی</th>
-                                            <th scope="col">نام</th>
-                                            <th scope="col">واحد اصلی</th>
-                                            <th scope="col">قیمت</th>
-                                            <th scope="col">تعداد</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">
-                                                1
-                                            </th>
-                                            <td>
-                                                g-21
-                                            </td>
-                                            <td>
-                                                کالا
-                                            </td>
-                                            <td>
-                                                گوشی glx
-                                            </td>
-                                            <td>
-                                                عدد
-                                            </td>
-                                            <td>
-                                                3,500,000 تومان
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-
-                                            <td>
-                                                <a><i class="text-danger fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="row justify-content-end mt-4">
-                                <div class="col-md-6 text-left">
-                                    <div class="final-cast">
-                                        <p>مجموع</p>
-                                        <p>0 تومان</p>
-                                    </div>
-                                    <div class="final-cast">
-                                        <p>تخفیف</p>
-                                        <p>0 تومان</p>
-                                    </div>
-                                    <div class="final-cast">
-                                        <p>مبلغ کل</p>
-                                        <p>0 تومان</p>
-                                    </div>
-
-                                    <button class="btn btn-outline-success mt-3">ثبت</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tab-pane fade py-3" id="pills-sell" role="tabpanel" aria-labelledby="pills-sell-tab">
-                        <div class="container">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">خریدار</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                <option selected value="1">امیر غیبی</option>
-                                              </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">تاریخ</label>
-                                            <input type="text" value="1401/02/21" class="form-control" readonly>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">عنوان</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <hr class="mt-1 mb-3">
-                                <div class="row">
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">دسته بندی</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                <option selected value="1">کالا</option>
-                                                <option value="2">خدمت</option>
-                                              </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">کد</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">نام</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">واحد</label>
-                                            <input type="text" class="form-control" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">قیمت</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-control-label">تعداد</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row justify-content-between">
-                                    <div class="col-3 text-right">
-                                        <button class="btn btn-danger">اضافه کردن به سبد</button>
-                                    </div>
-                                    <div class="col-3 text-left">
-                                        0 تومان
-                                    </div>
-
-                                </div>
-                            </form>
-
-                            <div class="table-responsive mt-4">
-                                <table class="table align-items-center table-flush">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">کد</th>
-                                            <th scope="col">دسته بندی</th>
-                                            <th scope="col">نام</th>
-                                            <th scope="col">واحد اصلی</th>
-                                            <th scope="col">قیمت</th>
-                                            <th scope="col">تعداد</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">
-                                                1
-                                            </th>
-                                            <td>
-                                                g-21
-                                            </td>
-                                            <td>
-                                                کالا
-                                            </td>
-                                            <td>
-                                                گوشی glx
-                                            </td>
-                                            <td>
-                                                عدد
-                                            </td>
-                                            <td>
-                                                3,500,000 تومان
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-
-                                            <td>
-                                                <a><i class="text-danger fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="row justify-content-end mt-4">
-                                <div class="col-md-6 text-left">
-                                    <div class="final-cast">
-                                        <p>مجموع</p>
-                                        <p>0 تومان</p>
-                                    </div>
-                                    <div class="final-cast">
-                                        <p>تخفیف</p>
-                                        <p>0 تومان</p>
-                                    </div>
-                                    <div class="final-cast">
-                                        <p>مبلغ کل</p>
-                                        <p>0 تومان</p>
-                                    </div>
-
-                                    <button class="btn btn-outline-success mt-3">ثبت</button>
-                                </div>
-
-                            </div>
-
+                <div class="card-header border-0">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col text-right">
+                            <h3 class="mb-0">لیست فاکتور</h3>
                         </div>
                     </div>
                 </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">نام</th>
+                                <th scope="col">نوع</th>
+                                <th scope="col">تاریخ</th>
+                                <th scope="col">مبلغ فاکتور</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    1
+                                </th>
+                                <td>
+                                    یوسف غیبی
+                                </td>
+                                <td>
+                                    خرید
+                                </td>
+                                <td>
+                                    1401/02/21
+                                </td>
+                                <td>
+                                    3,500,000 تومان
+                                </td>
+                                <td>
+                                    <a><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="createProductModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ثبت فاکتور جدید</h5>
+                <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+            </div>
+            <div class="modal-body">
+                <div class="header pb-2 pt-7 d-flex align-items-center">
+                    <span class="mask bg-gradient"></span>
+                </div>
+                <div class="container-fluid mt--7">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <div class="card shadow">
+                                <div class="card-header border-0">
+                                    <div class="row align-items-center">
+                                        <ul class="nav nav-pills w-100 px-2" id="pills-tab" role="tablist">
+                                            <li class="nav-item w-50" role="presentation">
+                                                <button class="btn nav-link w-100 active" id="pills-buy-tab" data-bs-toggle="pill" data-bs-target="#pills-buy" type="button" role="tab" aria-selected="true">خرید</button>
+                                            </li>
+                                            <li class="nav-item w-50" role="presentation">
+                                                <button class="btn nav-link w-100" id="pills-sell-tab" data-bs-toggle="pill" data-bs-target="#pills-sell" type="button" role="tab" aria-selected="false">فروش</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-5 mb-xl-0">
+                            <div class="card shadow">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active py-3" id="pills-buy" role="tabpanel" aria-labelledby="pills-buy-tab">
+                                        <div class="container">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="input-last-name">خریدار</label>
+                                                            <select class="form-select form-control" aria-label="Default select example">
+                                                                <option selected value="1">امیر غیبی</option>
+                                                              </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">تاریخ</label>
+                                                            <input type="text" value="1401/02/21" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">عنوان</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <hr class="mt-1 mb-3">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="input-last-name">دسته بندی</label>
+                                                            <select class="form-select form-control" aria-label="Default select example">
+                                                                <option selected value="1">کالا</option>
+                                                                <option value="2">خدمت</option>
+                                                              </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">کد</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">نام</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">واحد</label>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">قیمت</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">تعداد</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6 text-right">
+                                                        <button class="btn btn-danger">اضافه به سبد</button>
+                                                    </div>
+                                                    <div class="col-3 text-left">
+                                                        0 تومان
+                                                    </div>
+
+                                                </div>
+                                            </form>
+
+                                            <div class="table-responsive mt-4">
+                                                <table class="table align-items-center table-flush">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th scope="col">کد</th>
+                                                            <th scope="col">نام</th>
+                                                            <th scope="col">واحد اصلی</th>
+                                                            <th scope="col">قیمت</th>
+                                                            <th scope="col">تعداد</th>
+                                                            <th scope="col"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                g-21
+                                                            </th>
+                                                            <td>
+                                                                گوشی glx
+                                                            </td>
+                                                            <td>
+                                                                عدد
+                                                            </td>
+                                                            <td>
+                                                                3,500,000 تومان
+                                                            </td>
+                                                            <td>
+                                                                5
+                                                            </td>
+
+                                                            <td>
+                                                                <a><i class="text-danger fas fa-trash-alt"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="row justify-content-end mt-4">
+                                                <div class="col-md-6 text-left">
+                                                    <div class="final-cast">
+                                                        <p>مجموع</p>
+                                                        <p>0 تومان</p>
+                                                    </div>
+                                                    <div class="final-cast">
+                                                        <p>تخفیف</p>
+                                                        <p>0 تومان</p>
+                                                    </div>
+                                                    <div class="final-cast">
+                                                        <p>مبلغ کل</p>
+                                                        <p>0 تومان</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade py-3" id="pills-sell" role="tabpanel" aria-labelledby="pills-sell-tab">
+                                        <div class="container">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="input-last-name">خریدار</label>
+                                                            <select class="form-select form-control" aria-label="Default select example">
+                                                                <option selected value="1">امیر غیبی</option>
+                                                              </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">تاریخ</label>
+                                                            <input type="text" value="1401/02/21" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">عنوان</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <hr class="mt-1 mb-3">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="input-last-name">دسته بندی</label>
+                                                            <select class="form-select form-control" aria-label="Default select example">
+                                                                <option selected value="1">کالا</option>
+                                                                <option value="2">خدمت</option>
+                                                              </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">کد</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">نام</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">واحد</label>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">قیمت</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-2">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">تعداد</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6 text-right">
+                                                        <button class="btn btn-danger">اضافه به سبد</button>
+                                                    </div>
+                                                    <div class="col-3 text-left">
+                                                        0 تومان
+                                                    </div>
+
+                                                </div>
+                                            </form>
+
+                                            <div class="table-responsive mt-4">
+                                                <table class="table align-items-center table-flush">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th scope="col">کد</th>
+                                                            <th scope="col">نام</th>
+                                                            <th scope="col">واحد اصلی</th>
+                                                            <th scope="col">قیمت</th>
+                                                            <th scope="col">تعداد</th>
+                                                            <th scope="col"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                g-21
+                                                            </th>
+                                                            <td>
+                                                                گوشی glx
+                                                            </td>
+                                                            <td>
+                                                                عدد
+                                                            </td>
+                                                            <td>
+                                                                3,500,000 تومان
+                                                            </td>
+                                                            <td>
+                                                                5
+                                                            </td>
+
+                                                            <td>
+                                                                <a><i class="text-danger fas fa-trash-alt"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="row justify-content-end mt-4">
+                                                <div class="col-md-6 text-left">
+                                                    <div class="final-cast">
+                                                        <p>مجموع</p>
+                                                        <p>0 تومان</p>
+                                                    </div>
+                                                    <div class="final-cast">
+                                                        <p>تخفیف</p>
+                                                        <p>0 تومان</p>
+                                                    </div>
+                                                    <div class="final-cast">
+                                                        <p>مبلغ کل</p>
+                                                        <p>0 تومان</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer mt-md-2">
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">لغو</button>
+                <button type="button" class="btn btn-sm btn-primary">ثبت</button>
             </div>
         </div>
     </div>

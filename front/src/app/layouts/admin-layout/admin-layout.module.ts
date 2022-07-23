@@ -15,6 +15,7 @@ import { BankingComponent } from 'src/app/pages/banking/banking.component';
 import { IncomeAndExpensesComponent } from 'src/app/pages/income-and-expenses/income-and-expenses.component';
 import { ReceiveAndPayComponent } from 'src/app/pages/receive-and-pay/receive-and-pay.component';
 import { BuyAndSellComponent } from 'src/app/pages/buy-and-sell/buy-and-sell.component';
+import { SupportComponent } from 'src/app/pages/support/support.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { BuyAndSellComponent } from 'src/app/pages/buy-and-sell/buy-and-sell.com
     IncomeAndExpensesComponent,
     ReceiveAndPayComponent,
     BuyAndSellComponent,
+    SupportComponent
   ]
 })
 
