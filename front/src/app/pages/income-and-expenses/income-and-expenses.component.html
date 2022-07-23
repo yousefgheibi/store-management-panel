@@ -1,1 +1,184 @@
-<p>income-and-expenses works!</p>
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 150px;">
+    <!-- Mask -->
+    <span class="mask bg-gradient"></span>
+
+
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-8 col-md-10">
+                            <input type="search" class="search-input" placeholder="جستجو" />
+                        </div>
+                        <div class="col-4 col-md-2">
+                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createIncomeModal">جدید</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-5 mb-xl-0">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col text-right">
+                            <h3 class="mb-0">لیست دریافت و پرداخت</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">نام</th>
+                                <th scope="col">نوع</th>
+                                <th scope="col">تاریخ</th>
+                                <th scope="col">مبلغ</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    1
+                                </th>
+                                <td>
+                                    امیر غیبی
+                                </td>
+                                <td>دریافت - نقد</td>
+                                <td>
+                                    1401/04/21
+                                </td>
+                                <td>
+                                    14,000,000 تومان
+                                </td>
+                                <td>
+                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">دریافت - نقد</h5>
+                <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-last-name">نام</label>
+                                <p>امیر غیبی</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="title">تاریخ</label>
+                                <p>1401/04/21</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">مبلغ</label>
+                                <P>14,000,000 تومان </P>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">توضیحات</label>
+                                <p> </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createIncomeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">دریافت و پرداخت جدید</h5>
+                <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-last-name">متقاضی</label>
+                                <select class="form-select form-control" aria-label="Default select example">
+                                        <option selected value="1">امیر غیبی</option>
+                                      </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-last-name">نوع</label>
+                                <select class="form-select form-control" aria-label="Default select example">
+                                        <option selected value="1">دریافت - نقد</option>
+                                        <option selected value="2">دریافت - چک</option>
+                                        <option selected value="3">پرداخت - نقد</option>
+                                        <option selected value="4">پرداخت - چک</option>
+                                      </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">شماره چک</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">مبلغ</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">توضیحات</label>
+                                <textarea rows="3" type="text" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">لغو</button>
+                <button type="button" class="btn btn-sm btn-primary">ثبت</button>
+            </div>
+        </div>
+    </div>
+</div>

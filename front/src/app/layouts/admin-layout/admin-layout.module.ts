@@ -13,7 +13,6 @@ import { PeopleComponent } from 'src/app/pages/people/people.component';
 import { ProductComponent } from 'src/app/pages/product/product.component';
 import { BankingComponent } from 'src/app/pages/banking/banking.component';
 import { IncomeAndExpensesComponent } from 'src/app/pages/income-and-expenses/income-and-expenses.component';
-import { ReceiveAndPayComponent } from 'src/app/pages/receive-and-pay/receive-and-pay.component';
 import { BuyAndSellComponent } from 'src/app/pages/buy-and-sell/buy-and-sell.component';
 import { SupportComponent } from 'src/app/pages/support/support.component';
 // import { ToastrModule } from 'ngx-toastr';
@@ -34,7 +33,6 @@ import { SupportComponent } from 'src/app/pages/support/support.component';
     ProductComponent,
     BankingComponent,
     IncomeAndExpensesComponent,
-    ReceiveAndPayComponent,
     BuyAndSellComponent,
     SupportComponent
   ]

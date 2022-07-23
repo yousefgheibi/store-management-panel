@@ -4,7 +4,6 @@ import { BuyAndSellComponent } from 'src/app/pages/buy-and-sell/buy-and-sell.com
 import { IncomeAndExpensesComponent } from 'src/app/pages/income-and-expenses/income-and-expenses.component';
 import { PeopleComponent } from 'src/app/pages/people/people.component';
 import { ProductComponent } from 'src/app/pages/product/product.component';
-import { ReceiveAndPayComponent } from 'src/app/pages/receive-and-pay/receive-and-pay.component';
 import { SupportComponent } from 'src/app/pages/support/support.component';
 
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -18,6 +17,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'income-and-expenses',  component: IncomeAndExpensesComponent },
     { path: 'people',   component: PeopleComponent },
     { path: 'product',      component: ProductComponent },
-    { path: 'receive-and-pay',   component: ReceiveAndPayComponent },
     { path: 'support',      component: SupportComponent }
 ];
