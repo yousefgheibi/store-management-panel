@@ -11,10 +11,10 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-8 col-md-10">
-                            <input type="search" class="search-input" placeholder="جستجو" />
+                            <input type="search" class="search-input" name="searchKey" autocomplete="off" [(ngModel)]="searchKey" (ngModelChange)="doSearch($event)" placeholder="جستجو" />
                         </div>
                         <div class="col-4 col-md-2">
-                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#CreatePersonalModal">جدید</button>
+                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createPersonalModal" (click)="clicktoAddPerson()">جدید</button>
                         </div>
                     </div>
                 </div>
@@ -41,19 +41,70 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let item of data; let i = index">
                                 <th scope="row">
-                                    1
+                                    {{i+1}}
                                 </th>
                                 <td>
-                                    امیر غیبی
+                                    {{item.name}}
                                 </td>
-                                <td>بازاریاب</td>
+                                <td>{{item.category}}</td>
                                 <td>
-                                    09214536991
+                                    {{item.phone}}
                                 </td>
                                 <td>
-                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                    <div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">{{item.name}}</h5>
+                                                    <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="input-last-name">دسته بندی</label>
+                                                                    <p>{{item.category}}
+                                                                        <p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label" for="title">شماره تلفن</label>
+                                                                    <p>{{item.phone}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label">آدرس</label>
+                                                                    <P>{{item.address}}</P>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label class="form-control-label">شماره کارت</label>
+                                                                    <p>{{item.credit}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;
+                                    <a data-bs-toggle="modal" data-bs-target="#createPersonalModal" (click)="editPerson(item)"><i class="fas fa-pen text-yellow"></i></a>&nbsp;
+                                    <a (click)="deletePerson(item)"><i class="text-danger fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -66,79 +117,21 @@
 </div>
 
 
-<div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="createPersonalModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">امیر غیبی</h5>
+                <h5 class="modal-title" *ngIf="showAdd" id="exampleModalLabel">شخص جدید</h5>
+                <h5 class="modal-title" *ngIf="showEdit" id="exampleModalLabel">ویرایش</h5>
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-last-name">دسته بندی</label>
-                                <p>تامین کننده</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="title">شماره تلفن</label>
-                                <p>09244255353</p>
-                            </div>
-                        </div>
-                    </div>
+                <form [formGroup]="AddPersonForm">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">آدرس</label>
-                                <P>ایران ارومیه</P>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">شماره کارت</label>
-                                <p>6273-8111-2796-1396</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="CreatePersonalModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">شخص جدید</h5>
-                <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-last-name">نوع شخص</label>
-                                <select class="form-select form-control" aria-label="Default select example">
-                                        <option selected value="1">حقیقی</option>
-                                        <option value="2">حقوقی</option>
-                                      </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">نام شخص (شرکت)</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="name">
                             </div>
                         </div>
                     </div>
@@ -146,17 +139,17 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">دسته بندی</label>
-                                <select class="form-select form-control">
-                                        <option selected value="1">تامین کننده</option>
-                                        <option value="2">مشتری</option>
-                                        <option value="3">بازاریاب</option>
+                                <select class="form-select form-control" formControlName="category">
+                                        <option selected value="تامین کننده">تامین کننده</option>
+                                        <option value="مشتری">مشتری</option>
+                                        <option value="بازاریاب">بازاریاب</option>
                                       </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">شماره تلفن</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="phone">
                             </div>
                         </div>
                     </div>
@@ -164,7 +157,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">آدرس</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="address">
                             </div>
                         </div>
                     </div>
@@ -172,7 +165,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">شماره کارت</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="credit">
                             </div>
                         </div>
                     </div>
@@ -180,8 +173,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">لغو</button>
-                <button type="button" class="btn btn-sm btn-primary">ثبت</button>
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" #closebutton>لغو</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="showAdd" (click)="addPerson()" [disabled]="!AddPersonForm.valid">ثبت</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="!showAdd" (click)="EditPersonPost()" [disabled]="!AddPersonForm.valid">ویرایش</button>
             </div>
         </div>
     </div>

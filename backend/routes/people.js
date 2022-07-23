@@ -9,7 +9,7 @@ router.post('/add', (req, res) => {
     let query = `insert into people (name, category, phone, address , credit) value (?, ?, ?, ?, ?)`;
     db.query(query, [person.name, person.category, person.phone, person.address, person.credit], (err, result) => {
         if (!err) {
-            return res.status(200).json({ message: "person Added Successfully." });
+            return res.status(200).json({ message: "شخص مورد نظر ایجاد شد." });
         } else {
             return res.status(500).json(err);
         }
@@ -49,9 +49,9 @@ router.patch('/update', (req, res) => {
     db.query(query, [person.name, person.category, person.phone, person.address, person.credit, person.id], (err, result) => {
         if (!err) {
             if (result.affectedRows == 0) {
-                return res.status(404).json({ message: "person id does not found!" });
+                return res.status(404).json({ message: "همچین شخصی وجود ندارد.!" });
             }
-            return res.status(200).json({ message: "person Updated Successfully." });
+            return res.status(200).json({ message: "با موفقیت بروزرسانی شد." });
         } else {
             return res.status(500).json(err);
         }
@@ -65,9 +65,9 @@ router.delete('/delete/:id', (req, res) => {
     db.query(query, [id], (err, result) => {
         if (!err) {
             if (result.affectedRows == 0) {
-                return res.status(404).json({ message: "person id does not found!" });
+                return res.status(404).json({ message: "همچین شخصی وجود ندارد!" });
             }
-            return res.status(200).json({ message: "person Deleted Successfully." });
+            return res.status(200).json({ message: "با موفقیت حذف شد." });
         } else {
             return res.status(500).json(err);
         }
