@@ -54,6 +54,7 @@ export class PeopleComponent implements OnInit {
   clicktoAddPerson(){
     this.showAdd = true;
     this.showEdit = false;
+    this.AddPersonForm.reset();
   }
 
 
@@ -130,7 +131,7 @@ export class PeopleComponent implements OnInit {
     let c = confirm("آیا از حذف کردن این شخص مطمئن هستید ؟");
     if (c) {
       this._peopleService.delete(id).subscribe((res:any)=>{
-        this.notificationService.showSuccess("Successfully deleted!");
+        this.notificationService.showSuccess(" با موفقیت حذف شد!");
         this.tableData();
    
     },(err:any)=>{

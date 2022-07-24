@@ -104,7 +104,7 @@
                                     </div>
                                     <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;
                                     <a data-bs-toggle="modal" data-bs-target="#createPersonalModal" (click)="editPerson(item)"><i class="fas fa-pen text-yellow"></i></a>&nbsp;
-                                    <a (click)="deletePerson(item)"><i class="text-danger fas fa-trash-alt"></i></a>
+                                    <a (click)="deletePerson(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -121,8 +121,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" *ngIf="showAdd" id="exampleModalLabel">شخص جدید</h5>
-                <h5 class="modal-title" *ngIf="showEdit" id="exampleModalLabel">ویرایش</h5>
+                <h5 class="modal-title" *ngIf="showAdd">شخص جدید</h5>
+                <h5 class="modal-title" *ngIf="showEdit">ویرایش</h5>
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">

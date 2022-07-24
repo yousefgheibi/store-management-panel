@@ -11,10 +11,10 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-8 col-md-10">
-                            <input type="search" class="search-input" placeholder="جستجو" />
+                            <input type="search" class="search-input" placeholder="جستجو" autocomplete="off" [(ngModel)]="searchKey" (ngModelChange)="doSearch($event)" />
                         </div>
                         <div class="col-4 col-md-2">
-                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createProductModal">جدید</button>
+                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createProductModal" (click)="clicktoAddProduct()">جدید</button>
                         </div>
                     </div>
                 </div>
@@ -45,34 +45,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let item of data; let i = index">
                                 <th scope="row">
-                                    1
+                                    {{i+1}}
                                 </th>
-                                <td>
-                                    g-21
-                                </td>
-                                <td>
-                                    کالا
-                                </td>
-                                <td>
-                                    گوشی glx
-                                </td>
-                                <td>
-                                    عدد
-                                </td>
-                                <td>
-                                    3,200,000 تومان
-                                </td>
-                                <td>
-                                    3,500,000 تومان
-                                </td>
-                                <td>
-                                    5
-                                </td>
+                                <td>{{item.code}}</td>
+                                <td>{{item.category}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.unit}}</td>
+                                <td>{{item.bprice | currency: ' ' :'symbol-narrow':'4.0'}} تومان </td>
+                                <td>{{item.sprice | currency: ' ' :'symbol-narrow':'4.0'}} تومان </td>
+                                <td>{{item.stock}}</td>
 
                                 <td>
-                                    <a data-bs-toggle="modal" data-bs-target="#createProductModal"><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                    <a data-bs-toggle="modal" data-bs-target="#createProductModal" (click)="editProduct(item)"><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a (click)="deleteProduct(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -88,24 +74,25 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">کالا و خدمات جدید</h5>
+                <h5 class="modal-title" *ngIf="showAdd">کالا و خدمات جدید</h5>
+                <h5 class="modal-title" *ngIf="showEdit">ویرایش کالا و خدمات</h5>
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="AddProductForm">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">کد</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="code">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">دسته بندی</label>
-                                <select class="form-select form-control">
-                                        <option value="1" selected>کالا</option>
-                                        <option value="2">خدمات</option>
+                                <select class="form-select form-control" formControlName="category">
+                                        <option value="کالا" selected>کالا</option>
+                                        <option value="خدمات">خدمات</option>
                                     </select>
                             </div>
                         </div>
@@ -114,7 +101,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label class="form-control-label">نام</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="name">
                             </div>
                         </div>
                     </div>
@@ -122,33 +109,34 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">قیمت خرید</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="bprice">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">قیمت فروش</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="sprice">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">واحد اصلی</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="unit">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">تعداد</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="stock">
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">لغو</button>
-                <button type="button" class="btn btn-sm btn-primary">ثبت</button>
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" #closebutton>لغو</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="showAdd" (click)="addProduct()" [disabled]="!AddProductForm.valid">ثبت</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="!showAdd" (click)="EditProductPost()" [disabled]="!AddProductForm.valid">ویرایش</button>
             </div>
         </div>
     </div>
