@@ -15,21 +15,28 @@
                     <div class="col-lg-6">
                         <div class="card-body pr-lg-5 pl-lg-2 py-lg-5">
                             <h3 class="text-right mb-2">ورود</h3>
-                            <form role="form">
+                            <form [formGroup]="loginForm" (ngSubmit)="login()">
 
                                 <div class="form-group">
                                     <div class="input-group input-group-alternative mb-2">
-                                        <input class="form-control" placeholder="ایمیل" type="email">
+                                        <input class="form-control" formControlName="email" placeholder="ایمیل" type="email">
+                                    </div>
+                                    <div class="text-right" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+                                        <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['required']">این قسمت اجباری است.</span>
+                                        <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['pattern']">لطفا درست وارد کنید.</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group input-group-alternative">
-                                        <input class="form-control" placeholder="رمز عبور" type="password">
+                                        <input class="form-control" formControlName="password" placeholder="رمز عبور" type="password">
+                                    </div>
+                                    <div class="text-right" *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+                                        <span class="valid-err" *ngIf="loginForm.controls['password'].errors?.['required']">این قسمت اجباری است.</span>
                                     </div>
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary mt-4">ورود</button>
+                                    <button type="submit" class="btn btn-primary mt-4">ورود</button>
                                 </div>
                             </form>
                             <p class="text-right mt-3"><small>فراموشی رمزعبور</small></p>
