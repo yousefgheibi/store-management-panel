@@ -11,7 +11,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-8 col-md-10">
-                            <input type="search" class="search-input" placeholder="جستجو" />
+                            <input type="search" class="search-input" placeholder="جستجو" autocomplete="off" [(ngModel)]="searchKey" (ngModelChange)="doSearch($event)" />
                         </div>
                         <div class="col-4 col-md-2">
                             <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createMessageModal">جدید</button>
@@ -41,21 +41,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let item of dataSource; let i=index">
                                 <th scope="row">
-                                    1
+                                    {{i+1}}
                                 </th>
-                                <td>
-                                    تست
+                                <td>{{item.title}}
                                 </td>
                                 <td>
-                                    پشتیبانی
+                                    {{item.subject}}
                                 </td>
                                 <td>
-                                    1401/03/29
+                                    {{item.created_at |date }}
                                 </td>
                                 <td>
-                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
+                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a (click)="deleteTicket(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -67,11 +66,11 @@
 </div>
 
 
-<div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
+<!-- <div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">1401/03/29</h5>
+                <h5 class="modal-title"></h5>
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">
@@ -80,20 +79,20 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">عنوان</label>
-                                <p>تست</p>
+                                <p>{{data.title}}</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">واحد مربوطه</label>
-                                <p>پشتیبانی</p>
+                                <p>{{data.subject}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label class="form-control-label">پیام</label>
-                            <p>تست</p>
+                            <p>{{data.message}}</p>
                         </div>
                     </div>
 
@@ -104,7 +103,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
 
 <div class="modal fade" id="createMessageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
@@ -114,21 +114,21 @@
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="AddTiketForm">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">عنوان</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="title">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">واحد مربوطه</label>
-                                <select class="form-select form-control">
-                                        <option value="1" selected>پشتیبانی</option>
-                                        <option value="2">مالی</option>
-                                        <option value="3">فروش</option>
+                                <select class="form-select form-control" formControlName="subject">
+                                        <option value="پشتیبانی" selected>پشتیبانی</option>
+                                        <option value="مالی">مالی</option>
+                                        <option value="فروش">فروش</option>
                                       </select>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label class="form-control-label">پیام</label>
-                            <textarea class="form-control" rows="6"></textarea>
+                            <textarea class="form-control" rows="6" formControlName="message"></textarea>
 
                         </div>
                     </div>
@@ -144,8 +144,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">لغو</button>
-                <button type="button" class="btn btn-sm btn-primary">ارسال پیام</button>
+                <button type="button" class="btn btn-sm btn-danger" #closebutton data-bs-dismiss="modal">لغو</button>
+                <button type="button" class="btn btn-sm btn-primary" (click)="addTiket()">ارسال پیام</button>
             </div>
         </div>
     </div>
