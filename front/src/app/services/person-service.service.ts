@@ -18,8 +18,8 @@ export class PersonServiceService {
   }
 
 
-  getpeople() {
-    return this.httpClient.get(this.url + "/people/get/");
+  getpeople(email: string) {
+    return this.httpClient.get(this.url + "/people/get/"+ email);
   }
 
   getpeopleById(id: number) {

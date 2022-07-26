@@ -62,7 +62,6 @@ export class SupportComponent implements OnInit {
   addTiket(){
     var formData = this.AddTiketForm.value;
     var email = this._authService.getUserEmail();
-    console.log(email)
     const data ={
       user_email:  email,
       title: formData.title,

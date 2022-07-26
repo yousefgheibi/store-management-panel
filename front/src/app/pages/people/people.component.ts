@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { PersonServiceService } from 'src/app/services/person-service.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
@@ -20,7 +21,7 @@ export class PeopleComponent implements OnInit {
   responseMessage:any;
   AddPersonForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
-  constructor(private formBuilder: FormBuilder,private _peopleService : PersonServiceService , public notificationService : NotificationService) { }
+  constructor(private formBuilder: FormBuilder, private _authService:AuthService,private _peopleService : PersonServiceService , public notificationService : NotificationService) { }
 
   ngOnInit(): void {
 
@@ -36,7 +37,8 @@ export class PeopleComponent implements OnInit {
   }
 
   tableData(){
-    this._peopleService.getpeople().subscribe((res:any)=>{
+    var email = this._authService.getUserEmail();
+    this._peopleService.getpeople(email).subscribe((res:any)=>{
       this.data = res;
     },(err:any)=>{
       if(err.error?.message){
@@ -57,10 +59,11 @@ export class PeopleComponent implements OnInit {
     this.AddPersonForm.reset();
   }
 
-
   addPerson(){
     var formData = this.AddPersonForm.value;
+    var email = this._authService.getUserEmail();
     const data ={
+      user_email:  email,
       name: formData.name,
       category: formData.category,
       phone: formData.phone,

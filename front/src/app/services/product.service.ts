@@ -18,8 +18,8 @@ export class ProductService {
   }
 
 
-  getproduct() {
-    return this.httpClient.get(this.url + "/product/get/");
+  getproduct(email:string) {
+    return this.httpClient.get(this.url + "/product/get/" + email);
   }
 
 

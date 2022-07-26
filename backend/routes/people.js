@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post('/add', (req, res) => {
     let person = req.body;
-    let query = `insert into people (name, category, phone, address , credit) value (?, ?, ?, ?, ?)`;
-    db.query(query, [person.name, person.category, person.phone, person.address, person.credit], (err, result) => {
+    let query = `insert into people (name, category, phone, address , credit , user_email) value (?, ?, ?, ?, ? ,?)`;
+    db.query(query, [person.name, person.category, person.phone, person.address, person.credit, person.user_email], (err, result) => {
         if (!err) {
             return res.status(200).json({ message: "شخص مورد نظر ایجاد شد." });
         } else {
@@ -19,9 +19,10 @@ router.post('/add', (req, res) => {
 
 
 
-router.get('/get', (req, res) => {
-    let query = `select * from people order by name`;
-    db.query(query, (err, result) => {
+router.get('/get/:email', (req, res) => {
+    const email = req.params.email;
+    let query = `select * from people where user_email = ?`;
+    db.query(query, [email], (err, result) => {
         if (!err) {
             return res.status(200).json(result);
         } else {

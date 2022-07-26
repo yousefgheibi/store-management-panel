@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { ProductService } from 'src/app/services/product.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
@@ -21,7 +22,7 @@ export class ProductComponent implements OnInit {
   responseMessage:any;
   AddProductForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
-  constructor(private formBuilder: FormBuilder,private _productService :ProductService  , public notificationService : NotificationService) { }
+  constructor(private formBuilder: FormBuilder, private _authService:AuthService, private _productService :ProductService  , public notificationService : NotificationService) { }
 
   ngOnInit(): void {
 
@@ -39,7 +40,8 @@ export class ProductComponent implements OnInit {
   }
 
   tableData(){
-    this._productService.getproduct().subscribe((res:any)=>{
+    var email = this._authService.getUserEmail();
+    this._productService.getproduct(email).subscribe((res:any)=>{
       this.data = res;
     },(err:any)=>{
       if(err.error?.message){
@@ -63,8 +65,10 @@ export class ProductComponent implements OnInit {
 
   addProduct(){
     var formData = this.AddProductForm.value;
+    var email = this._authService.getUserEmail();
     const data ={
       code: formData.code,
+      user_email:  email,
       category: formData.category,
       name: formData.name,
       unit: formData.unit,

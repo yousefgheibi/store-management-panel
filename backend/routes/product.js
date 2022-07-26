@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post('/add', (req, res) => {
     let product = req.body;
-    let query = `insert into product (code, category, name, unit , bprice , sprice , stock) value (?, ?, ?, ?, ?, ?, ?)`;
-    db.query(query, [product.code, product.category, product.name, product.unit, product.bprice, product.sprice, product.stock], (err, result) => {
+    let query = `insert into product (code, category, name, unit , bprice , sprice , stock,user_email) value (?, ?, ?, ?, ?, ?, ? , ?)`;
+    db.query(query, [product.code, product.category, product.name, product.unit, product.bprice, product.sprice, product.stock, product.user_email], (err, result) => {
         if (!err) {
             return res.status(200).json({ message: "محصول مورد نظر با موفیت اضافه شد." });
         } else {
@@ -19,9 +19,10 @@ router.post('/add', (req, res) => {
 
 
 
-router.get('/get', (req, res) => {
-    let query = `select * from product order by name`;
-    db.query(query, (err, result) => {
+router.get('/get/:email', (req, res) => {
+    const email = req.params.email;
+    let query = `select * from product where user_email = ?`;
+    db.query(query, [email], (err, result) => {
         if (!err) {
             return res.status(200).json(result);
         } else {
