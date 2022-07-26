@@ -12,6 +12,7 @@ import { BankingComponent } from 'src/app/pages/banking/banking.component';
 import { IncomeAndExpensesComponent } from 'src/app/pages/income-and-expenses/income-and-expenses.component';
 import { BuyAndSellComponent } from 'src/app/pages/buy-and-sell/buy-and-sell.component';
 import { SupportComponent } from 'src/app/pages/support/support.component';
+import { PersianDatePipe } from 'src/app/pipes/persian-date.pipe';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { SupportComponent } from 'src/app/pages/support/support.component';
     BankingComponent,
     IncomeAndExpensesComponent,
     BuyAndSellComponent,
-    SupportComponent
+    SupportComponent,
+    PersianDatePipe
   ]
 })
 

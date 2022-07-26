@@ -52,7 +52,7 @@
                                         {{item.subject}}
                                     </td>
                                     <td>
-                                        {{item.created_at |date }}
+                                        {{item.created_at | persianDate }}
                                     </td>
                                     <td>
                                         <a (click)="item.showDetail = !item.showDetail"><i class="fas text-dark fa-eye"></i></a>&nbsp;<a (click)="deleteTicket(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
