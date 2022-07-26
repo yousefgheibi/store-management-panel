@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
+                    <table class="table">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
@@ -41,75 +41,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of data; let i = index">
-                                <th scope="row">
-                                    {{i+1}}
-                                </th>
-                                <td>
-                                    {{item.name}}
-                                </td>
-                                <td>{{item.category}}</td>
-                                <td>
-                                    {{item.phone}}
-                                </td>
-                                <td>
-                                    <div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">{{item.name}}</h5>
-                                                    <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form>
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="form-group">
-                                                                    <label class="form-control-label" for="input-last-name">دسته بندی</label>
-                                                                    <p>{{item.category}}
-                                                                        <p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="form-group">
-                                                                    <label class="form-control-label" for="title">شماره تلفن</label>
-                                                                    <p>{{item.phone}}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label class="form-control-label">آدرس</label>
-                                                                    <P>{{item.address}}</P>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label class="form-control-label">شماره کارت</label>
-                                                                    <p>{{item.credit}}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
-                                                </div>
+                            <ng-container *ngFor="let item of data; let i=index">
+                                <tr class="tid-data-row">
+                                    <th scope="row">
+                                        {{i+1}}
+                                    </th>
+                                    <td>
+                                        {{item.name}}
+                                    </td>
+                                    <td>{{item.category}}</td>
+                                    <td>
+                                        {{item.phone}}
+                                    </td>
+                                    <td>
+                                        <a (click)="item.showDetail = !item.showDetail"><i class="fas text-dark fa-eye"></i></a>&nbsp;
+                                        <a data-bs-toggle="modal" data-bs-target="#createPersonalModal" (click)="editPerson(item)"><i class="fas fa-pen text-yellow"></i></a>&nbsp;
+                                        <a (click)="deletePerson(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr class="tid-detail-row" [ngClass]="{ 'show': item.showDetail}">
+                                    <td colspan="5">
+                                        <div>
+                                            <div class="text-justify px-4 pt-2"> آدرس : {{item.address}} <br> شماره کارت : {{item.credit}}
                                             </div>
                                         </div>
-                                    </div>
-                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;
-                                    <a data-bs-toggle="modal" data-bs-target="#createPersonalModal" (click)="editPerson(item)"><i class="fas fa-pen text-yellow"></i></a>&nbsp;
-                                    <a (click)="deletePerson(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>
+
 
             </div>
         </div>
