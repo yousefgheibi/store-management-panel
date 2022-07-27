@@ -12,7 +12,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'buy-and-sell',   component: BuyAndSellComponent },
-    { path: 'income-and-expenses',  component: IncomeAndExpensesComponent },
+    { path: 'financial',  component: IncomeAndExpensesComponent },
     { path: 'people',   component: PeopleComponent },
     { path: 'product',      component: ProductComponent },
     { path: 'support',      component: SupportComponent }

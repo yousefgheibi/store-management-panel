@@ -9,6 +9,7 @@ const peopleRoute = require("./routes/people");
 const productRoute = require("./routes/product");
 const userRoute = require("./routes/user");
 const tiketRoute = require("./routes/ticket");
+const financialRoute = require("./routes/financial");
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,7 @@ app.use('/user', userRoute);
 app.use('/people', peopleRoute);
 app.use('/product', productRoute);
 app.use('/tiket', tiketRoute);
+app.use('/financial', financialRoute);
 
 app.listen(process.env.PORT, () => {
     console.log("server is running");
