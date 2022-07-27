@@ -30,5 +30,24 @@ table {
             font-size: 0.75rem;
             padding-bottom: 0px;
         }
+        &.tid-detail-row {
+            >td {
+                padding: 0;
+                border: 0;
+                >div {
+                    max-height: 0;
+                    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+                    overflow: hidden;
+                    >div {
+                        font-size: 0.9rem;
+                        padding: 8px;
+                    }
+                }
+            }
+            &.show>td>div {
+                max-height: 1000px;
+                transition: max-height 1s ease-in-out;
+            }
+        }
     }
 }

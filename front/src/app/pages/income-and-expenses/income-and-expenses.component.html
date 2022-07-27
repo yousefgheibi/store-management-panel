@@ -11,10 +11,10 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-8 col-md-10">
-                            <input type="search" class="search-input" placeholder="جستجو" />
+                            <input type="search" class="search-input" name="searchKey" autocomplete="off" [(ngModel)]="searchKey" (ngModelChange)="doSearch($event)" placeholder="جستجو" />
                         </div>
                         <div class="col-4 col-md-2">
-                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#createIncomeModal">جدید</button>
+                            <button class="btn btn-danger w-100" (click)="clicktoAddFinanc()" data-bs-toggle="modal" data-bs-target="#createIncomeModal">جدید</button>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
+                    <table class="table">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
@@ -42,98 +42,60 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    امیر غیبی
-                                </td>
-                                <td>دریافت - نقد</td>
-                                <td>
-                                    1401/04/21
-                                </td>
-                                <td>
-                                    14,000,000 تومان
-                                </td>
-                                <td>
-                                    <a><i data-bs-toggle="modal" data-bs-target="#showDetailModal" class="fas text-dark fa-eye"></i></a>&nbsp;<a><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                            <ng-container *ngFor="let item of data; let i=index">
+                                <tr class="tid-data-row">
+                                    <th scope="row">
+                                        {{i+1}}
+                                    </th>
+                                    <td>
+                                        {{item.person_name}}
+                                    </td>
+                                    <td>{{item.types}}</td>
+                                    <td>
+                                        {{item.created_at | persianDate}}
+                                    </td>
+                                    <td>
+                                        {{item.amount| currency: ' ' :'symbol-narrow':'4.0'}} تومان
+                                    </td>
+                                    <td>
+                                        <a (click)="item.showDetail = !item.showDetail"><i class="fas text-dark fa-eye"></i></a>&nbsp;
+                                        <a data-bs-toggle="modal" data-bs-target="#createIncomeModal" (click)="editFinanc(item)"><i class="fas fa-pen text-yellow"></i></a>&nbsp;
+                                        <a (click)="deleteFinanc(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr class="tid-detail-row" [ngClass]="{ 'show': item.showDetail}">
+                                    <td colspan="5">
+                                        <div>
+                                            <div class="text-justify px-4 pt-2"> آدرس : {{item.description}} </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
-
-<div class="modal fade" id="showDetailModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">دریافت - نقد</h5>
-                <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-last-name">نام</label>
-                                <p>امیر غیبی</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="title">تاریخ</label>
-                                <p>1401/04/21</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">مبلغ</label>
-                                <P>14,000,000 تومان </P>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">توضیحات</label>
-                                <p> </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="createIncomeModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">دریافت و پرداخت جدید</h5>
+                <h5 class="modal-title" *ngIf="showAdd">دریافت و پرداخت جدید</h5>
+                <h5 class="modal-title" *ngIf="showEdit"> ویرایش دریافت و پرداخت</h5>
                 <i class="fas text-dark fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="AddFinancForm">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-last-name">متقاضی</label>
-                                <select class="form-select form-control" aria-label="Default select example">
-                                        <option selected value="1">امیر غیبی</option>
+                                <select class="form-select form-control" formControlName="person_name">
+                                        <option *ngFor="let person of people;" [value]="person.name">{{person.name}}</option>
                                       </select>
                             </div>
                         </div>
@@ -141,26 +103,20 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-last-name">نوع</label>
-                                <select class="form-select form-control" aria-label="Default select example">
-                                        <option selected value="1">دریافت - نقد</option>
-                                        <option selected value="2">دریافت - چک</option>
-                                        <option selected value="3">پرداخت - نقد</option>
-                                        <option selected value="4">پرداخت - چک</option>
+                                <select class="form-select form-control" formControlName="types">
+                                        <option selected value="دریافت - نقد">دریافت - نقد</option>
+                                        <option selected value="دریافت - چک">دریافت - چک</option>
+                                        <option selected value="پرداخت - نقد">پرداخت - نقد</option>
+                                        <option selected value="پرداخت - چک">پرداخت - چک</option>
                                       </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label">شماره چک</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
                                 <label class="form-control-label">مبلغ</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="amount">
                             </div>
                         </div>
                     </div>
@@ -168,7 +124,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">توضیحات</label>
-                                <textarea rows="3" type="text" class="form-control"></textarea>
+                                <textarea rows="3" type="text" class="form-control" formControlName="description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -176,8 +132,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">لغو</button>
-                <button type="button" class="btn btn-sm btn-primary">ثبت</button>
+
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" #closebutton>لغو</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="showAdd" (click)="addFinanc()" [disabled]="!AddFinancForm.valid">ثبت</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="!showAdd" (click)="EditFinancPost()" [disabled]="!AddFinancForm.valid">ویرایش</button>
             </div>
         </div>
     </div>
