@@ -10,33 +10,33 @@
     <!-- Table -->
     <div class="row justify-content-center">
         <div class="col-lg-9 col-11">
-            <div class="card bg-secondary shadow border-0">
+            <div class="card shadow border-0">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card-body pr-lg-5 pl-lg-2 py-lg-5">
-                            <h3 class="text-right mb-2">ورود</h3>
+                            <h3 class="text-right mb-4">ورود</h3>
                             <form [formGroup]="loginForm" (ngSubmit)="login()">
 
                                 <div class="form-group">
-                                    <div class="input-group input-group-alternative mb-2">
-                                        <input class="form-control" formControlName="email" placeholder="ایمیل" type="email">
+                                    <div class="input-group input-group">
+                                        <input class="form-control" autocomplete="off" formControlName="email" placeholder="ایمیل" type="email">
                                     </div>
-                                    <div class="text-right" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+                                    <div class="text-right valid" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
                                         <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['required']">این قسمت اجباری است.</span>
                                         <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['pattern']">لطفا درست وارد کنید.</span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group input-group-alternative">
-                                        <input class="form-control" formControlName="password" placeholder="رمز عبور" type="password">
+                                <div class="form-group mt-3">
+                                    <div class="input-group input-group">
+                                        <input class="form-control" autocomplete="off" formControlName="password" placeholder="رمز عبور" type="password">
                                     </div>
-                                    <div class="text-right" *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+                                    <div class="text-right valid" *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
                                         <span class="valid-err" *ngIf="loginForm.controls['password'].errors?.['required']">این قسمت اجباری است.</span>
                                     </div>
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mt-4">ورود</button>
+                                    <button type="submit" class="btn btn-danger w-100" [disabled]="!loginForm.valid">ورود</button>
                                 </div>
                             </form>
                             <p class="text-right mt-3"><small>فراموشی رمزعبور</small></p>

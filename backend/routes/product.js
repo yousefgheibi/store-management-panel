@@ -21,7 +21,7 @@ router.post('/add', (req, res) => {
 
 router.get('/get/:email', (req, res) => {
     const email = req.params.email;
-    let query = `select * from product where user_email = ?`;
+    let query = `select * from product where user_email = ? order by id DESC`;
     db.query(query, [email], (err, result) => {
         if (!err) {
             return res.status(200).json(result);
@@ -50,6 +50,18 @@ router.get('/getKala/:email', (req, res) => {
     db.query(query, [email], (err, result) => {
         if (!err) {
             return res.status(200).json(result);
+        } else {
+            return res.status(500).json(err);
+        }
+    })
+})
+
+router.get('/getSize/:email', (req, res) => {
+    const email = req.params.email;
+    let query = `SELECT COUNT(id) as count FROM product where user_email = ?`;
+    db.query(query, [email], (err, result) => {
+        if (!err) {
+            return res.status(200).json(result[0]);
         } else {
             return res.status(500).json(err);
         }

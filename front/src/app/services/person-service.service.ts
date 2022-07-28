@@ -26,8 +26,11 @@ export class PersonServiceService {
     return this._http.get(this.url + "/people/getById/" + id);
   }
 
-
   delete(id:number){
     return this._http.delete(this.url + "/people/delete/" + id);
+  }
+
+  getPeople_size(email:string){
+    return this._http.get(this.url + "/people/getSize/"+ email);
   }
 }

@@ -58,6 +58,7 @@
     
     .form-control {
         color: #8898aa;
+        border-radius: 4px !important;
         transition: all 300ms ease !important;
         &:focus {
             border: 1px solid #F5365C !important;

@@ -3,34 +3,30 @@
         <div class="header-body">
             <!-- Card stats -->
             <div class="row">
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-4 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">فروش</h5>
-                                    <span class="h2 mb-0">0 تومان</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">اشخاص</h5>
+                                    <span class="h2 mb-0">{{people_size}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                        <i class="fa fa-credit-card"></i>
+                                        <i class="fa fa-users"></i>
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap ml-2"><small>نسبت به ماه گذشته</small></span>
-                                <span class="text-success"><small><i class="fa fa-arrow-up"></i> 3.48%</small></span>
-                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-4 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">خرید</h5>
-                                    <span class="h2 mb-0">0 تومان</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">کالا</h5>
+                                    <span class="h2 mb-0">{{product_size}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -38,20 +34,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap ml-2"><small>نسبت به ماه گذشته</small></span>
-                                <span class="text-danger"><small><i class="fas fa-arrow-down"></i> 3.48%</small></span>
-                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-4 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">درآمد</h5>
-                                    <span class="h2 mb-0">0 تومان</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">فاکتور</h5>
+                                    <span class="h2 mb-0">{{factor_size}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -59,206 +51,142 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap ml-2"><small>نسبت به ماه گذشته</small></span>
-                                <span class="text-warning"><small><i class="fas fa-arrow-down"></i> 1.10%</small></span>
-                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">هزینه</h5>
-                                    <span class="h2 mb-0">0 تومان</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-percent"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap ml-2"><small>نسبت به ماه گذشته</small></span>
-                                <span class="text-success"><small><i class="fas fa-arrow-up"></i> 12%</small></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
 </div>
 
 <div class="container-fluid mt--7">
-    <div class="row">
-        <div class="col-xl-12 mb-5 mb-xl-0">
-            <div class="card bg-white shadow">
-                <div class="card-body">
-                    <!-- Chart -->
-                    <div class="chart">
-                        <canvas id="liner-chart"></canvas>
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col text-right">
+                            <h3 class="mb-0">لیست کالا و خدمات</h3>
+                        </div>
                     </div>
-
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">کد</th>
+                                <th scope="col">دسته بندی</th>
+                                <th scope="col">نام</th>
+                                <th scope="col">واحد اصلی</th>
+                                <th scope="col">قیمت</th>
+                                <th scope="col">موجودی</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of productdata.slice(0,3); let i = index">
+                                <th scope="row">
+                                    {{i+1}}
+                                </th>
+                                <td>{{item.code}}</td>
+                                <td>{{item.category}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.unit}}</td>
+                                <td>{{item.price | currency: ' ' :'symbol-narrow':'4.0'}} تومان </td>
+                                <td>{{item.stock}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row mt-5">
-        <div class="col-md-6 mb-5 mb-xl-0">
+    <div class="row">
+        <div class="col-8 mb-5 mb-xl-0">
             <div class="card shadow">
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-between">
                         <div class="col text-right">
-                            <h3 class="mb-0">بانکداری</h3>
+                            <h3 class="mb-0">لیست دریافت و پرداخت</h3>
                         </div>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table align-items-center">
+                    <table class="table">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">بانک</th>
-                                <th scope="col">موجودی</th>
+                                <th scope="col">#</th>
+                                <th scope="col">نام</th>
+                                <th scope="col">نوع</th>
                                 <th scope="col">تاریخ</th>
+                                <th scope="col">مبلغ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    انصار
-                                </th>
-                                <td>
-                                    15,000,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    صادرات
-                                </th>
-                                <td>
-                                    110,500,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    مسکن
-                                </th>
-                                <td>
-                                    18,630,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    صندوق
-                                </th>
-                                <td>
-                                    6,500,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-                            </tr>
+                            <ng-container *ngFor="let item of financdata.slice(0,3); let i=index">
+                                <tr class="tid-data-row">
+                                    <th scope="row">
+                                        {{i+1}}
+                                    </th>
+                                    <td>
+                                        {{item.person_name}}
+                                    </td>
+                                    <td>{{item.types}}</td>
+                                    <td>
+                                        {{item.created_at | persianDate}}
+                                    </td>
+                                    <td>
+                                        {{item.amount| currency: ' ' :'symbol-narrow':'4.0'}} تومان
+                                    </td>
+
+                                </tr>
+
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mb-5 mb-xl-0">
+        <div class="col-md-4 mb-5 mb-xl-0">
             <div class="card shadow">
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-between">
                         <div class="col text-right">
-                            <h3 class="mb-0">چک های موعد نزدیک</h3>
+                            <h3 class="mb-0">لیست پیام های ارسالی</h3>
                         </div>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table align-items-center">
+                    <table class="table">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">بانک</th>
-                                <th scope="col">در وجه</th>
-                                <th scope="col">مبلغ</th>
-                                <th scope="col">تاریخ</th>
+                                <th scope="col">#</th>
+                                <th scope="col">عنوان</th>
+                                <th scope="col">واحد مربوطه</th>
+                                <th scope="col">تاریخ ثبت</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    انصار
-                                </th>
-                                <td>
-                                    علی پیری
-                                </td>
-                                <td>
-                                    15,000,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    انصار
-                                </th>
-                                <td>
-                                    علی پیری
-                                </td>
-                                <td>
-                                    15,000,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    انصار
-                                </th>
-                                <td>
-                                    علی پیری
-                                </td>
-                                <td>
-                                    15,000,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    انصار
-                                </th>
-                                <td>
-                                    علی پیری
-                                </td>
-                                <td>
-                                    15,000,000 تومان
-                                </td>
-                                <td>
-                                    141/09/21
-                                </td>
-
-                            </tr>
-
+                            <ng-container *ngFor="let item of tiketdata.slice(0,3); let i=index">
+                                <tr class="tid-data-row">
+                                    <th scope="row">
+                                        {{i+1}}
+                                    </th>
+                                    <td>{{item.title}}
+                                    </td>
+                                    <td>
+                                        {{item.subject}}
+                                    </td>
+                                    <td>
+                                        {{item.created_at | persianDate }}
+                                    </td>
+                                </tr>
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>

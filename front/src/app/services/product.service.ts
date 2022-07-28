@@ -8,32 +8,35 @@ import { environment } from 'src/environments/environment';
 export class ProductService {
 
   url = environment.apiUrl;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private _http: HttpClient) { }
   add(data:any){
-    return this.httpClient.post(this.url+'/product/add',data);
+    return this._http.post(this.url+'/product/add',data);
   }
 
   update(data:any){
-    return this.httpClient.patch(this.url+'/product/update',data);
+    return this._http.patch(this.url+'/product/update',data);
   }
 
-
   getproduct(email:string) {
-    return this.httpClient.get(this.url + "/product/get/" + email);
+    return this._http.get(this.url + "/product/get/" + email);
   }
 
   getProductsById(id: any){
-    return this.httpClient.get(this.url + '/product/getById/'+ id);
+    return this._http.get(this.url + '/product/getById/'+ id);
   }
   getKhadamat(email:string) {
-    return this.httpClient.get(this.url + "/product/getKhadamat/" + email);
-  }
-  getKala(email:string) {
-    return this.httpClient.get(this.url + "/product/getKala/" + email);
+    return this._http.get(this.url + "/product/getKhadamat/" + email);
   }
 
+  getKala(email:string) {
+    return this._http.get(this.url + "/product/getKala/" + email);
+  }
+
+  getProduct_size(email:string){
+    return this._http.get(this.url + "/product/getSize/"+ email);
+  }
 
   delete(id:number){
-    return this.httpClient.delete(this.url + "/product/delete/" + id);
+    return this._http.delete(this.url + "/product/delete/" + id);
   }
 }

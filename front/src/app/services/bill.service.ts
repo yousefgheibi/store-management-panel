@@ -9,21 +9,25 @@ import { environment } from 'src/environments/environment';
 export class BillService {
 
   url = environment.apiUrl;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
   generateReport(data: any) {
-    return this.httpClient.post(this.url + '/bill/generateReport/', data);
+    return this._http.post(this.url + '/bill/generateReport/', data);
   }
 
   getPdf(data: any): Observable<Blob> {
-    return this.httpClient.post(this.url + '/bill/getPdf', data, { responseType: 'blob' });
+    return this._http.post(this.url + '/bill/getPdf', data, { responseType: 'blob' });
   }
 
   getBills(email:string) {
-    return this.httpClient.get(this.url + '/bill/getBills/'+email);
+    return this._http.get(this.url + '/bill/getBills/'+email);
   }
 
+  getFactor_size(email:string){
+    return this._http.get(this.url + "/bill/getSize/"+ email);
+  }
+  
   delete(id: any) {
-    return this.httpClient.delete(this.url + '/bill/delete/' + id);
+    return this._http.delete(this.url + '/bill/delete/' + id);
   }
 }

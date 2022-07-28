@@ -8,18 +8,18 @@ import { environment } from 'src/environments/environment';
 export class TiketService {
 
   url = environment.apiUrl;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
   add(data:any){
-    return this.httpClient.post(this.url+'/tiket/add',data);
+    return this._http.post(this.url+'/tiket/add',data);
   }
 
   gettiket(email: string){
-    return this.httpClient.get(this.url + "/tiket/get/" + email);
+    return this._http.get(this.url + "/tiket/get/" + email);
   }
 
 
   deletetiket(id:number){
-    return this.httpClient.delete(this.url + "/tiket/delete/" + id);
+    return this._http.delete(this.url + "/tiket/delete/" + id);
   }
 }
