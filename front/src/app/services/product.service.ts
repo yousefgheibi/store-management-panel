@@ -22,6 +22,16 @@ export class ProductService {
     return this.httpClient.get(this.url + "/product/get/" + email);
   }
 
+  getProductsById(id: any){
+    return this.httpClient.get(this.url + '/product/getById/'+ id);
+  }
+  getKhadamat(email:string) {
+    return this.httpClient.get(this.url + "/product/getKhadamat/" + email);
+  }
+  getKala(email:string) {
+    return this.httpClient.get(this.url + "/product/getKala/" + email);
+  }
+
 
   delete(id:number){
     return this.httpClient.delete(this.url + "/product/delete/" + id);

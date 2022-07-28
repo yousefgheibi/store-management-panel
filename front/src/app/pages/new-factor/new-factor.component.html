@@ -5,246 +5,155 @@
 </div>
 <div class="container-fluid mt--7">
     <div class="row">
-        <div class="col-12 mb-3">
-            <div class="card shadow">
-                <div class="card-header border-0">
-                    <div class="row align-items-center">
-                        <ul class="nav nav-pills w-100 px-2" id="pills-tab" role="tablist">
-                            <li class="nav-item w-50" role="presentation">
-                                <button class="btn nav-link w-100 active" id="pills-buy-tab" data-bs-toggle="pill" data-bs-target="#pills-buy" type="button" role="tab" aria-selected="true">خرید</button>
-                            </li>
-                            <li class="nav-item w-50" role="presentation">
-                                <button class="btn nav-link w-100" id="pills-sell-tab" data-bs-toggle="pill" data-bs-target="#pills-sell" type="button" role="tab" aria-selected="false">فروش</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="col-12 mb-5 mb-xl-0">
             <div class="card shadow">
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active py-3" id="pills-buy" role="tabpanel" aria-labelledby="pills-buy-tab">
-                        <div class="container">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">خریدار</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                <option selected value="1">امیر غیبی</option>
-                                              </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">عنوان</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">روش پرداخت</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
+                <div class="container text-right pt-3">
+                    <form [formGroup]="AddFactorForm">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-control-label">نام</label>
+                                    <select class="form-select form-control" formControlName="name" (change)="getPersonDetails($event.target.value)">
+                                        <option *ngFor="let person of people" [value]="person.id">{{person.name}}</option>
+                                      </select>
                                 </div>
-                                <hr class="mt-1 mb-3">
-                                <div class="row">
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">دسته بندی</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                <option selected value="1">کالا</option>
-                                                <option value="2">خدمت</option>
-                                              </select>
-                                        </div>
-                                    </div>
+                            </div>
 
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label">نام</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label">قیمت</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label">تعداد</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="form-control-label">آدرس</label>
+                                    <input type="text" class="form-control" formControlName="address">
                                 </div>
-                                <br>
-                                <div class="row justify-content-between">
-                                    <div class="col-6 text-right">
-                                        <button class="btn btn-danger">اضافه به سبد</button>
-                                    </div>
-                                    <div class="col-3 text-left">
-                                        0 تومان
-                                    </div>
+                            </div>
 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-control-label">تلفن</label>
+                                    <input type="text" class="form-control" formControlName="phone">
                                 </div>
-                            </form>
+                            </div>
 
-                            <div class="table-responsive mt-4">
-                                <table class="table align-items-center">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">نام</th>
-                                            <th scope="col">واحد اصلی</th>
-                                            <th scope="col">قیمت</th>
-                                            <th scope="col">تعداد</th>
-                                            <th scope="col">قیمت کل</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                گوشی glx
-                                            </td>
-                                            <td>
-                                                عدد
-                                            </td>
-                                            <td>
-                                                3,500,000 تومان
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                3,500,000 تومان
-                                            </td>
-                                            <td>
-                                                <a><i class="text-danger fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-control-label">روش پرداخت</label>
+                                    <select class="form-select form-control" formControlName="paymentMethod">
+                                        <option selected value="نقدی">نقدی</option>
+                                        <option value="کارت بانکی">کارت بانکی</option>
+                                        <option value="چک">چک</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-control-label">نوع فاکتور</label>
+                                    <select class="form-select form-control" formControlName="typeFactor">
+                                        <option selected value="خرید">خرید</option>
+                                        <option value="فروش">فروش</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">توضیحات</label>
+                                    <textarea type="text" rows="4" class="form-control" formControlName="description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mt-1 mb-3">
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label">دسته بندی</label>
+                                    <select class="form-select form-control" formControlName="category" (change)="getProductByCategory($event)">
+                                        <option value="کالا">کالا</option>
+                                        <option value="خدمات">خدمت</option>
+                                      </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label">نام</label>
+                                    <select class="form-select form-control" formControlName="product" id="product" (change)="getProductDetails($event.target.value)">
+                                        <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+                                      </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label">قیمت</label>
+                                    <input type="text" class="form-control" formControlName="price">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label">تعداد</label>
+                                    <input type="number" class="form-control" formControlName="stock" (keyup)="setQuantity($event)">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row justify-content-between">
+                            <div class="col-6 text-right">
+                                <button class="btn btn-danger" [disabled]="validateProductAdd()" (click)="add()">اضافه به سبد</button>
+                            </div>
+                            <div class="col-3 text-left">
+                                <input type="text" class="form-control" formControlName="total">
                             </div>
 
                         </div>
+                    </form>
+
+                    <div class="table-responsive mt-4">
+                        <table class="table align-items-center">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">نام</th>
+                                    <th scope="col">قیمت</th>
+                                    <th scope="col">تعداد</th>
+                                    <th scope="col">قیمت کل</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of dataSource;let i=index">
+                                    <td>
+                                        {{i+1}}
+                                    </td>
+                                    <td>
+                                        {{item.name}}
+                                    </td>
+                                    <td>
+                                        {{item.price | currency: ' ' :'symbol-narrow':'4.0'}} تومان
+                                    </td>
+                                    <td>
+                                        {{item.stock}}
+                                    </td>
+                                    <td>
+                                        {{item.total | currency: ' ' :'symbol-narrow':'4.0'}} تومان
+                                    </td>
+                                    <td>
+                                        <a (click)="handleDelteAction(i,item)"><i class="text-danger fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="tab-pane fade py-3" id="pills-sell" role="tabpanel" aria-labelledby="pills-sell-tab">
-                        <div class="container">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">خریدار</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                <option selected value="1">امیر غیبی</option>
-                                              </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">عنوان</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label">روش پرداخت</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <hr class="mt-1 mb-3">
-                                <div class="row">
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">دسته بندی</label>
-                                            <select class="form-select form-control" aria-label="Default select example">
-                                                <option selected value="1">کالا</option>
-                                                <option value="2">خدمت</option>
-                                              </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label">نام</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label">قیمت</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-control-label">تعداد</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row justify-content-between">
-                                    <div class="col-6 text-right">
-                                        <button class="btn btn-danger">اضافه به سبد</button>
-                                    </div>
-                                    <div class="col-3 text-left">
-                                        0 تومان
-                                    </div>
-
-                                </div>
-                            </form>
-
-                            <div class="table-responsive mt-4">
-                                <table class="table align-items-center">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">نام</th>
-                                            <th scope="col">واحد اصلی</th>
-                                            <th scope="col">قیمت</th>
-                                            <th scope="col">تعداد</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                گوشی glx
-                                            </td>
-                                            <td>
-                                                عدد
-                                            </td>
-                                            <td>
-                                                3,500,000 تومان
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-
-                                            <td>
-                                                <a><i class="text-danger fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <div class="row flex-row-reverse">
+                        <div class="col-md-4 p-4" *ngIf="totalAmount != 0">
+                            <div class="final-cast">
+                                <p>جمع کل : </p>
+                                <p>
+                                    {{totalAmount | currency: ' ' :'symbol-narrow':'4.0'}} تومان </p>
                             </div>
-
+                            <button class="btn btn-danger w-100 mt-2" [disabled]="validateSubmit()" (click)="submitAction()">ثبت فاکتور</button>
                         </div>
                     </div>
                 </div>

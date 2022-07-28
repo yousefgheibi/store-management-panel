@@ -12,6 +12,7 @@ import { IncomeAndExpensesComponent } from 'src/app/pages/income-and-expenses/in
 import { BuyAndSellComponent } from 'src/app/pages/buy-and-sell/buy-and-sell.component';
 import { SupportComponent } from 'src/app/pages/support/support.component';
 import { PersianDatePipe } from 'src/app/pipes/persian-date.pipe';
+import { NewFactorComponent } from 'src/app/pages/new-factor/new-factor.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { PersianDatePipe } from 'src/app/pipes/persian-date.pipe';
     UserProfileComponent,
     PeopleComponent,
     ProductComponent,
+    NewFactorComponent,
     IncomeAndExpensesComponent,
     BuyAndSellComponent,
     SupportComponent,

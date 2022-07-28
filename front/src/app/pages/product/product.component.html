@@ -38,8 +38,7 @@
                                 <th scope="col">دسته بندی</th>
                                 <th scope="col">نام</th>
                                 <th scope="col">واحد اصلی</th>
-                                <th scope="col">قیمت خرید</th>
-                                <th scope="col">قیمت فروش</th>
+                                <th scope="col">قیمت</th>
                                 <th scope="col">موجودی</th>
                                 <th scope="col"></th>
                             </tr>
@@ -53,8 +52,7 @@
                                 <td>{{item.category}}</td>
                                 <td>{{item.name}}</td>
                                 <td>{{item.unit}}</td>
-                                <td>{{item.bprice | currency: ' ' :'symbol-narrow':'4.0'}} تومان </td>
-                                <td>{{item.sprice | currency: ' ' :'symbol-narrow':'4.0'}} تومان </td>
+                                <td>{{item.price | currency: ' ' :'symbol-narrow':'4.0'}} تومان </td>
                                 <td>{{item.stock}}</td>
 
                                 <td>
@@ -98,26 +96,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">نام</label>
                                 <input type="text" class="form-control" formControlName="name">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label">قیمت خرید</label>
-                                <input type="text" class="form-control" formControlName="bprice">
+                                <label class="form-control-label">قیمت</label>
+                                <input type="text" class="form-control" formControlName="price">
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-control-label">قیمت فروش</label>
-                                <input type="text" class="form-control" formControlName="sprice">
-                            </div>
-                        </div>
+
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">واحد اصلی</label>

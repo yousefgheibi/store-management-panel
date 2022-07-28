@@ -30,8 +30,7 @@ export class ProductComponent implements OnInit {
       code: [null, [Validators.required]],
       category: [null, [Validators.required]],
       name: [null, [Validators.required]],
-      bprice: [null, [Validators.required]],
-      sprice: [null, [Validators.required]],
+      price: [null, [Validators.required]],
       unit: [null, [Validators.required]],
       stock: [null, [Validators.required]]
     });
@@ -72,8 +71,7 @@ export class ProductComponent implements OnInit {
       category: formData.category,
       name: formData.name,
       unit: formData.unit,
-      bprice: formData.bprice,
-      sprice: formData.sprice,
+      price: formData.price,
       stock: formData.stock
     }
 
@@ -104,8 +102,7 @@ export class ProductComponent implements OnInit {
     this.AddProductForm.controls['category'].setValue(item.category);
     this.AddProductForm.controls['name'].setValue(item.name);
     this.AddProductForm.controls['unit'].setValue(item.unit);
-    this.AddProductForm.controls['bprice'].setValue(item.bprice);
-    this.AddProductForm.controls['sprice'].setValue(item.sprice);
+    this.AddProductForm.controls['price'].setValue(item.price);
     this.AddProductForm.controls['stock'].setValue(item.stock);
   }
 
@@ -117,8 +114,7 @@ export class ProductComponent implements OnInit {
       category: formData.category,
       name: formData.name,
       unit: formData.unit,
-      bprice: formData.bprice,
-      sprice: formData.sprice,
+      price: formData.price,
       stock: formData.stock
     }
     this._productService.update(data).subscribe((res:any)=>{
