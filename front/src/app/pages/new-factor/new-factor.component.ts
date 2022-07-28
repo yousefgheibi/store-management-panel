@@ -6,7 +6,7 @@ import { PersonServiceService } from 'src/app/services/person-service.service';
 import { ProductService } from 'src/app/services/product.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
 import {BillService} from '../../services/bill.service';
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-new-factor',
   templateUrl: './new-factor.component.html',
@@ -194,9 +194,8 @@ export class NewFactorComponent implements OnInit {
       email : email
     };
 
-    console.log(data);
     this._billService.generateReport(data).subscribe((res: any) => {
-      // this.downloadFile(res?.uuid);
+      this.downloadFile(res?.uuid);
       this.AddFactorForm.reset();
       this.dataSource = [];
       this.totalAmount = 0;
@@ -211,4 +210,18 @@ export class NewFactorComponent implements OnInit {
       this.notificationService.showError(this.responseMessage);
     });
   }
+
+  downloadFile(fileName:any){
+    var data = {
+      uuid:fileName
+    }
+
+    this._billService.getPdf(data).subscribe((res:any)=>{
+      saveAs(res,fileName+'.pdf');
+      // this.router.navigate(['file:///D:/Project/self/Cafe-Management-System/backend/generated_pdf/'+data.uuid +'.pdf'])
+      
+    })
+
+}
+  
   }

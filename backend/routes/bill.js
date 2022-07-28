@@ -37,32 +37,32 @@ router.post('/generateReport', (req, res) => {
 })
 
 
-// router.post('/getPdf', (req, res) => {
-//     const orderDetails = req.body;
-//     const pdfPath = './generated_pdf/' + orderDetails.uuid + '.pdf';
-//     if (fs.existsSync(pdfPath)) {
-//         res.contentType("application/pdf");
-//         fs.createReadStream(pdfPath).pipe(res);
-//     } else {
-//         var productDetailsReport = JSON.parse(orderDetails.productDetails);
-//         ejs.renderFile(path.join(__dirname, '', "report.ejs"), { productDetails: productDetailsReport, name: orderDetails.name, email: orderDetails.email, contactnumber: orderDetails.contactNumber, paymentmethod: orderDetails.paymentMethod, totalAmount: orderDetails.total }, (err, result) => {
-//             if (err) {
-//                 return res.status(500).json(err);
-//             } else {
-//                 pdf.create(result).toFile('./generated_pdf/' + orderDetails.uuid + ".pdf", (err, data) => {
-//                     if (err) {
-//                         console.log(err);
-//                         return res.status(500).json(err);
-//                     } else {
-//                         res.contentType("application/pdf");
-//                         fs.createReadStream(pdfPath).pipe(res);
-//                     }
-//                 })
-//             }
-//         })
-//     }
-//
-// })
+router.post('/getPdf', (req, res) => {
+    const orderDetails = req.body;
+    const pdfPath = './generated_pdf/' + orderDetails.uuid + '.pdf';
+    if (fs.existsSync(pdfPath)) {
+        res.contentType("application/pdf");
+        fs.createReadStream(pdfPath).pipe(res);
+    } else {
+        var productDetailsReport = JSON.parse(orderDetails.productDetails);
+        ejs.renderFile(path.join(__dirname, '', "report.ejs"), { productDetails: productDetailsReport, name: orderDetails.name, typeFactor: orderDetails.typeFactor, paymentmethod: orderDetails.paymentMethod, totalAmount: orderDetails.total, description: orderDetails.description, generatedUuid: generatedUuid, address: orderDetails.address, phone: orderDetails.phone }, (err, result) => {
+            if (err) {
+                return res.status(500).json(err);
+            } else {
+                pdf.create(result).toFile('./generated_pdf/' + orderDetails.uuid + ".pdf", (err, data) => {
+                    if (err) {
+                        console.log(err);
+                        return res.status(500).json(err);
+                    } else {
+                        res.contentType("application/pdf");
+                        fs.createReadStream(pdfPath).pipe(res);
+                    }
+                })
+            }
+        })
+    }
+
+})
 
 
 
