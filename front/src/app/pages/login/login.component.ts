@@ -58,23 +58,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
 
-
-
-    // this._http.get<any>('http://localhost:8080/user/login').subscribe(res=>{
-    //   const user = res.find((a:any)=>{
-    //     return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password;
-    //   })
-
-    //   if(user){
-    //     alert("logined");
-    //     this.loginForm.reset();
-    //     this.router.navigate(['dashboard']);
-    //   }
-    //   else{
-    //     alert('User Not Found !!')
-    //   }
-    // })
-  
   ngOnDestroy() {
   }
 

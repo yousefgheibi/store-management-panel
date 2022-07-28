@@ -8,26 +8,26 @@ import { environment } from 'src/environments/environment';
 export class PersonServiceService {
 
   url = environment.apiUrl;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private _http: HttpClient) { }
   add(data:any){
-    return this.httpClient.post(this.url+'/people/add',data);
+    return this._http.post(this.url+'/people/add',data);
   }
 
   update(data:any){
-    return this.httpClient.patch(this.url+'/people/update',data);
+    return this._http.patch(this.url+'/people/update',data);
   }
 
 
   getpeople(email: string) {
-    return this.httpClient.get(this.url + "/people/get/"+ email);
+    return this._http.get(this.url + "/people/get/"+ email);
   }
 
   getpeopleById(id: number) {
-    return this.httpClient.get(this.url + "/people/getById/" + id);
+    return this._http.get(this.url + "/people/getById/" + id);
   }
 
 
   delete(id:number){
-    return this.httpClient.delete(this.url + "/people/delete/" + id);
+    return this._http.delete(this.url + "/people/delete/" + id);
   }
 }

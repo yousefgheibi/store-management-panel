@@ -9,10 +9,10 @@
                 <a class="nav-link pr-0" role="button" ngbDropdownToggle>
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="assets/img/p.jpg">
+              <img alt="Image placeholder" src="assets/img/p.png">
             </span>
                         <div class="media-body mr-2 d-none d-lg-block">
-                            <span class="mb-0 text-sm font-weight-bold">یوسف غیبی</span>
+                            <span class="mb-0 text-sm font-weight-bold">{{userName}}</span>
                         </div>
                     </div>
                 </a>
@@ -21,7 +21,7 @@
                         <span>حساب کاربری</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#!" class="dropdown-item">
+                    <a (click)="logout()" class="dropdown-item">
                         <span>خروج</span>
                     </a>
                 </div>
