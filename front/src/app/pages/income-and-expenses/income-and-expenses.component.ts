@@ -14,7 +14,7 @@ import { GlobalContanst } from 'src/app/shared/globalContanst';
 export class IncomeAndExpensesComponent implements OnInit {
   people: any;
   dataSource:any;
-  isWait : boolean = false;
+  
   searchKey : string | undefined;
   showAdd !:boolean;
   showEdit !:boolean;

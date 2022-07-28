@@ -66,9 +66,10 @@ router.post('/getPdf', (req, res) => {
 
 
 
-router.get('/getBills', (req, res) => {
-    let query = "select * from bill order by id DESC";
-    connection.query(query, (err, result) => {
+router.get('/getBills/:email', (req, res) => {
+    const email = req.params.email;
+    let query = "select * from bill where user_email = ? order by id DESC";
+    connection.query(query, [email], (err, result) => {
         if (!err) {
             return res.status(200).json(result);
         } else {

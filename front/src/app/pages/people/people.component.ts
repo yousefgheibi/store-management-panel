@@ -12,7 +12,7 @@ import { GlobalContanst } from 'src/app/shared/globalContanst';
 export class PeopleComponent implements OnInit {
 
   dataSource:any;
-  isWait : boolean = false;
+  
   searchKey : string | undefined;
   showAdd !:boolean;
   showEdit !:boolean;

@@ -218,7 +218,6 @@ export class NewFactorComponent implements OnInit {
 
     this._billService.getPdf(data).subscribe((res:any)=>{
       saveAs(res,fileName+'.pdf');
-      // this.router.navigate(['file:///D:/Project/self/Cafe-Management-System/backend/generated_pdf/'+data.uuid +'.pdf'])
       
     })
 

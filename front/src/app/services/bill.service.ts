@@ -19,8 +19,8 @@ export class BillService {
     return this.httpClient.post(this.url + '/bill/getPdf', data, { responseType: 'blob' });
   }
 
-  getBills() {
-    return this.httpClient.get(this.url + '/bill/getBills/');
+  getBills(email:string) {
+    return this.httpClient.get(this.url + '/bill/getBills/'+email);
   }
 
   delete(id: any) {

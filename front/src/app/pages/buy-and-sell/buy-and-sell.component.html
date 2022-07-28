@@ -11,7 +11,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-8 col-md-10">
-                            <input type="search" class="search-input" placeholder="جستجو" />
+                            <input type="search" class="search-input" name="searchKey" autocomplete="off" [(ngModel)]="searchKey" (ngModelChange)="doSearch($event)" placeholder="جستجو" />
                         </div>
                         <div class="col-4 col-md-2">
                             <button class="btn btn-danger w-100" routerLink="/new-factor">جدید</button>
@@ -25,7 +25,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-between">
                         <div class="col text-right">
-                            <h3 class="mb-0">لیست فاکتور</h3>
+                            <h3 class="mb-0">لیست خرید و فروش</h3>
                         </div>
                     </div>
                 </div>
@@ -42,26 +42,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    یوسف غیبی
-                                </td>
-                                <td>
-                                    خرید
-                                </td>
-                                <td>
-                                    1401/02/21
-                                </td>
-                                <td>
-                                    3,500,000 تومان
-                                </td>
-                                <td>
-                                    <a><i class="fas fa-pen text-yellow"></i></a>&nbsp;<a><i class="text-danger fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                            <ng-container *ngFor="let item of data; let i=index">
+                                <tr class="tid-data-row">
+                                    <th scope="row">
+                                        {{i+1}}
+                                    </th>
+                                    <td>
+                                        {{item.name}}
+                                    </td>
+                                    <td>{{item.typeFactor}}</td>
+                                    <td>
+                                        {{item.created_at | persianDate}}
+                                    </td>
+                                    <td>
+                                        {{item.total| currency: ' ' :'symbol-narrow':'4.0'}} تومان
+                                    </td>
+                                    <td>
+                                        <a (click)="downloadFactor(item.uuid)"><i class="fas fa-file-download"></i></a>
+                                        <a (click)="item.showDetail = !item.showDetail"><i class="fas text-dark fa-eye"></i></a>&nbsp;
+                                        <a (click)="deleteFactor(item.id)"><i class="text-danger fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr class="tid-detail-row" [ngClass]="{ 'show': item.showDetail}">
+                                    <td colspan="5">
+                                        <div>
+                                            <div class="text-justify px-4 pt-2"> {{item.description}} </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
                         </tbody>
                     </table>
                 </div>

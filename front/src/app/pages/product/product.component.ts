@@ -13,7 +13,7 @@ import { GlobalContanst } from 'src/app/shared/globalContanst';
 export class ProductComponent implements OnInit {
   
   dataSource:any;
-  isWait : boolean = false;
+  
   searchKey : string | undefined;
   showAdd !:boolean;
   showEdit !:boolean;
