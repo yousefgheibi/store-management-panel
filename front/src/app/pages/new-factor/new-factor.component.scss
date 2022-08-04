@@ -23,13 +23,20 @@ table {
 }
 
 .final-cast {
-  display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     border: 1px dashed #F5365C;
-  border-radius: 5px;
+    border-radius: 5px;
     padding: 10px;
     p {
         margin-bottom: 0px !important;
+    }
+}
+
+.btn-send:disabled,
+.btn-send[disabled] {
+    &:hover {
+        cursor: not-allowed;
     }
 }

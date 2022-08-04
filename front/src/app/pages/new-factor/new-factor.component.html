@@ -153,7 +153,7 @@
                                 <p>
                                     {{totalAmount | currency: ' ' :'symbol-narrow':'4.0'}} تومان </p>
                             </div>
-                            <button class="btn btn-danger w-100 mt-2" [disabled]="validateSubmit()" (click)="submitAction()">ثبت فاکتور</button>
+                            <button class="btn btn-send btn-danger w-100 mt-2" [disabled]="clicked || validateSubmit()" (click)="submitAction(); clicked = true;">ثبت فاکتور</button>
                         </div>
                     </div>
                 </div>

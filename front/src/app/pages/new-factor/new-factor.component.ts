@@ -23,6 +23,7 @@ export class NewFactorComponent implements OnInit {
   productid: number;
   products: any = [];
   dataSource: any = [];
+  clicked = false;
   data: any;
   responseMessage: string;
   AddFactorForm !: FormGroup;
