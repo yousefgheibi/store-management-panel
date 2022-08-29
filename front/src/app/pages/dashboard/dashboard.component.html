@@ -2,14 +2,14 @@
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-xl-4 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">اشخاص</h5>
-                                    <span class="h2 mb-0">{{people_size}}</span>
+                                    <span class="h3 mb-0">{{people_size}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">کالا</h5>
-                                    <span class="h2 mb-0">{{product_size}}</span>
+                                    <span class="h3 mb-0">{{product_size}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -43,7 +43,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">فاکتور</h5>
-                                    <span class="h2 mb-0">{{factor_size}}</span>
+                                    <span class="h5 mb-0">{{factor_size}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -55,15 +55,20 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="row mt-5">
+            </div> -->
+            <div class="row">
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">فروش این ماه</h5>
-                                    <span class="h2 mb-0">{{totalSellMonth | number }} تومان</span>
+                                    <span class="h5 mb-0">{{totalSellMonth | number }} تومان</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                        <i class="fa fa-chart-pie"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +80,12 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">خرید این ماه</h5>
-                                    <span class="h2 mb-0">{{totalBuyMonth | number }} تومان</span>
+                                    <span class="h5 mb-0">{{totalBuyMonth | number }} تومان</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                        <i class="fa fa-chart-pie"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +97,12 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">فروش امسال</h5>
-                                    <span class="h2 mb-0">{{totalSellYear | number }} تومان</span>
+                                    <span class="h5 mb-0">{{totalSellYear | number }} تومان</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                        <i class="fa fa-chart-pie"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +115,12 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">خرید امسال</h5>
-                                    <span class="h2 mb-0">{{totalBuyYear | number }} تومان</span>
+                                    <span class="h5 mb-0">{{totalBuyYear | number }} تومان</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                                        <i class="fa fa-chart-pie"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +176,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-8 mb-5 mb-xl-0">
+        <div class="col-md-8 mb-5 mb-xl-0">
             <div class="card shadow">
                 <div class="card-header border-0">
                     <div class="row align-items-center justify-content-between">
