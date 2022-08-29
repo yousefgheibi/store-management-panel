@@ -30,4 +30,20 @@ export class BillService {
   delete(id: any) {
     return this._http.delete(this.url + '/bill/delete/' + id);
   }
+
+  getSellTotalYear(email:string){
+    return this._http.get(this.url + "/bill/getSellTotalYear/"+ email);
+  }
+
+  getSellTotalMonth(email:string){
+    return this._http.get(this.url + "/bill/getSellTotalMonth/"+ email);
+  }
+
+  getBuyTotalYear(email:string){
+    return this._http.get(this.url + "/bill/getBuyTotalYear/"+ email);
+  }
+
+  getBuyTotalMonth(email:string){
+    return this._http.get(this.url + "/bill/getBuyTotalMonth/"+ email);
+  }
 }

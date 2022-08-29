@@ -22,6 +22,11 @@ export class DashboardComponent implements OnInit {
   product_size: number = 0;
   factor_size: number = 0;
 
+  totalSellYear: number = 0;
+  totalBuyYear: number = 0;
+  totalSellMonth: number = 0;
+  totalBuyMonth: number = 0;
+
   productdata: any;
   tiketdata: any;
   financdata:any;
@@ -41,6 +46,12 @@ export class DashboardComponent implements OnInit {
     this.tableProductData();
     this.tableTiketData();
     this.tableFinancData();
+
+
+    this.getBuyTotalMonth();
+    this.getBuyTotalYear();
+    this.getSellTotalMonth();
+    this.getSellTotalYear();
 
   }
 
@@ -65,6 +76,34 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  getSellTotalYear(){
+    var email = this._authService.getUserEmail();
+    this._billService.getSellTotalYear(email).subscribe((res :any)=>{
+      this.totalSellYear = res?.STotal;
+    })
+  }
+
+  getBuyTotalYear(){
+    var email = this._authService.getUserEmail();
+    this._billService.getBuyTotalYear(email).subscribe((res :any)=>{
+      this.totalBuyYear = res?.STotal;
+    })
+  }
+
+  getSellTotalMonth(){
+    var email = this._authService.getUserEmail();
+    this._billService.getSellTotalMonth(email).subscribe((res :any)=>{
+      this.totalSellMonth = res?.STotal;
+    })
+  }
+  
+
+  getBuyTotalMonth(){
+    var email = this._authService.getUserEmail();
+    this._billService.getBuyTotalMonth(email).subscribe((res :any)=>{
+      this.totalBuyMonth = res?.STotal;
+    })
+  }
   tableProductData(){
     var email = this._authService.getUserEmail();
     this._productService.getproduct(email).subscribe((res:any)=>{

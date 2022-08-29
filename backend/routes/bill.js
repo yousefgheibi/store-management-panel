@@ -78,6 +78,58 @@ router.get('/getBills/:email', (req, res) => {
     })
 })
 
+
+router.get('/getBuyTotalMonth/:email', (req, res) => {
+    const email = req.params.email;
+    let query = "SELECT DATE_FORMAT(created_at, '%Y-%m') AS month , SUM(total) as STotal FROM bill WHERE created_at > created_at-30 AND user_email = ? AND typeFactor = 'خرید' GROUP BY month ORDER BY month DESC;";
+    db.query(query, [email], (err, result) => {
+        if (!err) {
+            return res.status(200).json(result[0]);
+        } else {
+            return res.status(500).json(err);
+        }
+    })
+})
+
+router.get('/getSellTotalMonth/:email', (req, res) => {
+    const email = req.params.email;
+    let query = "SELECT DATE_FORMAT(created_at, '%Y-%m') AS month , SUM(total) as STotal FROM bill WHERE created_at > created_at-30 AND user_email = ? AND typeFactor = 'فروش' GROUP BY month ORDER BY month DESC;";
+    db.query(query, [email], (err, result) => {
+        if (!err) {
+            return res.status(200).json(result[0]);
+        } else {
+            return res.status(500).json(err);
+        }
+    })
+})
+
+
+router.get('/getBuyTotalYear/:email', (req, res) => {
+    const email = req.params.email;
+    let query = "SELECT DATE_FORMAT(created_at, '%Y') AS year , SUM(total) as STotal FROM bill WHERE created_at > created_at-365 AND user_email = ? AND typeFactor = 'فروش' GROUP BY year ORDER BY year DESC;";
+    db.query(query, [email], (err, result) => {
+        if (!err) {
+            return res.status(200).json(result[0]);
+        } else {
+            return res.status(500).json(err);
+        }
+    })
+})
+
+
+router.get('/getSellTotalYear/:email', (req, res) => {
+    const email = req.params.email;
+    let query = "SELECT DATE_FORMAT(created_at, '%Y') AS year , SUM(total) as STotal FROM bill WHERE created_at > created_at-365 AND user_email = ? AND typeFactor = 'فروش' GROUP BY year ORDER BY year DESC;";
+    db.query(query, [email], (err, result) => {
+        if (!err) {
+            return res.status(200).json(result[0]);
+        } else {
+            return res.status(500).json(err);
+        }
+    })
+})
+
+
 router.get('/getSize/:email', (req, res) => {
     const email = req.params.email;
     let query = `SELECT COUNT(id) as count FROM bill where user_email = ?`;
@@ -106,3 +158,11 @@ router.delete('/delete/:id', (req, res) => {
     })
 })
 module.exports = router;
+
+
+
+// SELECT TO_CHAR(created_at, 'YYYY-MM') , SUM(total) 
+// FROM bill 
+// WHERE created_at > created_at-30 
+// GROUP BY created_at 
+// ORDER BY created_at DESC
