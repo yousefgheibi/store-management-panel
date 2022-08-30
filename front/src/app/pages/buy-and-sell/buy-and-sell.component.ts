@@ -4,6 +4,7 @@ import { BillService } from 'src/app/services/bill.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
 import { saveAs } from 'file-saver';
+import { ExcelService } from 'src/app/services/excel.service';
 @Component({
   selector: 'app-buy-and-sell',
   templateUrl: './buy-and-sell.component.html',
@@ -15,7 +16,7 @@ export class BuyAndSellComponent implements OnInit {
   searchKey : string | undefined;
   data: any;
   responseMessage:any;
-  constructor(private _authService:AuthService,private _billService : BillService,public notificationService:NotificationService) { }
+  constructor(private _authService:AuthService,private excelService: ExcelService, private _billService : BillService,public notificationService:NotificationService) { }
 
   ngOnInit(): void {
     this.tableData();
@@ -82,5 +83,8 @@ doSearch(searchKey : string) {
   else{
       this.tableData();
   }
+}
+getCSV(){
+  this.excelService.download_csv(this.data);
 }
 }

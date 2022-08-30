@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { ExcelService } from 'src/app/services/excel.service';
 import { FinancialService } from 'src/app/services/financial.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { PersonServiceService } from 'src/app/services/person-service.service';
@@ -23,7 +24,7 @@ export class IncomeAndExpensesComponent implements OnInit {
   responseMessage:any;
   AddFinancForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
-  constructor(private formBuilder: FormBuilder,private _peopleService:PersonServiceService ,private _authService:AuthService,private _financialService : FinancialService , public notificationService : NotificationService) { }
+  constructor(private formBuilder: FormBuilder,private excelService: ExcelService,private _peopleService:PersonServiceService ,private _authService:AuthService,private _financialService : FinancialService , public notificationService : NotificationService) { }
 
   ngOnInit(): void {
     this.AddFinancForm = this.formBuilder.group({
@@ -179,6 +180,9 @@ doSearch(searchKey : string) {
   }
 }
 
+getCSV(){
+  this.excelService.download_csv(this.data);
+}
 
 }
 

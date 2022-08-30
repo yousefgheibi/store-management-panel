@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { ExcelService } from 'src/app/services/excel.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { ProductService } from 'src/app/services/product.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
@@ -22,7 +23,7 @@ export class ProductComponent implements OnInit {
   responseMessage:any;
   AddProductForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
-  constructor(private formBuilder: FormBuilder, private _authService:AuthService, private _productService :ProductService  , public notificationService : NotificationService) { }
+  constructor(private formBuilder: FormBuilder,private excelService: ExcelService, private _authService:AuthService, private _productService :ProductService  , public notificationService : NotificationService) { }
 
   ngOnInit(): void {
 
@@ -170,6 +171,10 @@ doSearch(searchKey : string) {
   else{
       this.tableData();
   }
+}
+
+getCSV(){
+  this.excelService.download_csv(this.data);
 }
 
 }
