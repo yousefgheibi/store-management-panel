@@ -106,7 +106,7 @@ router.get('/getSellTotalMonth/:email', (req, res) => {
 
 router.get('/getBuyTotalYear/:email', (req, res) => {
     const email = req.params.email;
-    let query = "SELECT DATE_FORMAT(created_at, '%Y') AS year , SUM(total) as STotal FROM bill WHERE created_at > created_at-365 AND user_email = ? AND typeFactor = 'فروش' GROUP BY year ORDER BY year DESC;";
+    let query = "SELECT DATE_FORMAT(created_at, '%Y') AS year , SUM(total) as STotal FROM bill WHERE created_at > created_at-365 AND user_email = ? AND typeFactor = 'خرید' GROUP BY year ORDER BY year DESC;";
     db.query(query, [email], (err, result) => {
         if (!err) {
             return res.status(200).json(result[0]);
