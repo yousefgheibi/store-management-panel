@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { PersonServiceService } from 'src/app/services/person-service.service';
 import { ProductService } from 'src/app/services/product.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
 import {BillService} from '../../services/bill.service';
 import { saveAs } from 'file-saver';
+import { PeopleService } from 'src/app/services/people.service';
+import { PeopleModel } from 'src/app/models/people.model';
+import { ProductModel } from 'src/app/models/product.model';
 @Component({
   selector: 'app-new-factor',
   templateUrl: './new-factor.component.html',
@@ -16,18 +18,17 @@ export class NewFactorComponent implements OnInit {
   price: any;
   productUnit : string;
   totalAmount = 0;
-  people:any = [];
+  people:PeopleModel[] = [];
   productname: string;
   productCode: string;
   personName : string;
   productid: number;
-  products: any = [];
+  products: ProductModel[] = [];
   dataSource: any = [];
   clicked = false;
-  data: any;
   responseMessage: string;
   AddFactorForm !: FormGroup;
-  constructor(private _peopleService: PersonServiceService , private  _billService: BillService, private formBuilder: FormBuilder, private _productService: ProductService, private _authService: AuthService, public notificationService: NotificationService) { }
+  constructor(private _peopleService: PeopleService , private  _billService: BillService, private formBuilder: FormBuilder, private _productService: ProductService, private _authService: AuthService, public notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.getPeople();

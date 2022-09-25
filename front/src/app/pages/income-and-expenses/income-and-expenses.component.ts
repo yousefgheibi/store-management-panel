@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IncomeModel } from 'src/app/models/income.model';
+import { PeopleModel } from 'src/app/models/people.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import { FinancialService } from 'src/app/services/financial.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { PersonServiceService } from 'src/app/services/person-service.service';
+import { PeopleService } from 'src/app/services/people.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
 
 @Component({
@@ -13,18 +15,16 @@ import { GlobalContanst } from 'src/app/shared/globalContanst';
   styleUrls: ['./income-and-expenses.component.scss']
 })
 export class IncomeAndExpensesComponent implements OnInit {
-  people: any;
-  dataSource:any;
-  
+  people: PeopleModel[] =[];
   searchKey : string | undefined;
   showAdd !:boolean;
   showEdit !:boolean;
   FinancId !: number;
-  data: any;
+  data: IncomeModel[] = [];
   responseMessage:any;
   AddFinancForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
-  constructor(private formBuilder: FormBuilder,private excelService: ExcelService,private _peopleService:PersonServiceService ,private _authService:AuthService,private _financialService : FinancialService , public notificationService : NotificationService) { }
+  constructor(private formBuilder: FormBuilder,private excelService: ExcelService,private _peopleService:PeopleService ,private _authService:AuthService,private _financialService : FinancialService , public notificationService : NotificationService) { }
 
   ngOnInit(): void {
     this.AddFinancForm = this.formBuilder.group({

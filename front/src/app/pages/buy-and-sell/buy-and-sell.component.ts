@@ -12,10 +12,9 @@ import { ExcelService } from 'src/app/services/excel.service';
 })
 export class BuyAndSellComponent implements OnInit {
 
-  dataSource:any;
   searchKey : string | undefined;
   data: any;
-  responseMessage:any;
+  responseMessage:string;
   constructor(private _authService:AuthService,private excelService: ExcelService, private _billService : BillService,public notificationService:NotificationService) { }
 
   ngOnInit(): void {

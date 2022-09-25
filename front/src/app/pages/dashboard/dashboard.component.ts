@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { IncomeModel } from 'src/app/models/income.model';
+import { ProductModel } from 'src/app/models/product.model';
+import { SupportModel } from 'src/app/models/support.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { BillService } from 'src/app/services/bill.service';
 import { FinancialService } from 'src/app/services/financial.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { PersonServiceService } from 'src/app/services/person-service.service';
+import { PeopleService } from 'src/app/services/people.service';
 import { ProductService } from 'src/app/services/product.service';
 import { TiketService } from 'src/app/services/tiket.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
@@ -27,13 +30,13 @@ export class DashboardComponent implements OnInit {
   totalSellMonth: number = 0;
   totalBuyMonth: number = 0;
 
-  productdata: any;
-  tiketdata: any;
-  financdata:any;
+  productdata: ProductModel[]=[];
+  tiketdata: SupportModel[] = [];
+  financdata:IncomeModel[] =[];
   
   responseMessage:string;
 
-  constructor(private _authService:AuthService ,private _financialService:FinancialService ,private _tiketService: TiketService, private notificationService:NotificationService, private _productService:ProductService , private _billService:BillService ,private _personService:PersonServiceService){
+  constructor(private _authService:AuthService ,private _financialService:FinancialService ,private _tiketService: TiketService, private notificationService:NotificationService, private _productService:ProductService , private _billService:BillService ,private _personService:PeopleService){
 
   }
   ngOnInit() {

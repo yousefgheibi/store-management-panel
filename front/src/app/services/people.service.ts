@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { PeopleModel } from '../models/people.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PersonServiceService {
+export class PeopleService {
 
   url = environment.apiUrl;
   constructor(private _http: HttpClient) { }
-  add(data:any){
+  add(data:PeopleModel){
     return this._http.post(this.url+'/people/add',data);
   }
 
-  update(data:any){
+  update(data:PeopleModel){
     return this._http.patch(this.url+'/people/update',data);
   }
 

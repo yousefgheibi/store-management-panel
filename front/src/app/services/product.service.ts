@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ProductModel } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,11 @@ export class ProductService {
 
   url = environment.apiUrl;
   constructor(private _http: HttpClient) { }
-  add(data:any){
+  add(data:ProductModel){
     return this._http.post(this.url+'/product/add',data);
   }
 
-  update(data:any){
+  update(data:ProductModel){
     return this._http.patch(this.url+'/product/update',data);
   }
 

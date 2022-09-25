@@ -4,13 +4,14 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TiketService } from 'src/app/services/tiket.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
+import { SupportModel } from 'src/app/models/support.model';
 @Component({
   selector: 'app-support',
   templateUrl: './support.component.html',
   styleUrls: ['./support.component.scss']
 })
 export class SupportComponent implements OnInit {
-  dataSource : any;
+  dataSource : SupportModel[] = [];
   searchKey : string | undefined;
   responseMessage: any;
   AddTiketForm !: FormGroup;

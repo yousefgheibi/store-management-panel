@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PeopleModel } from 'src/app/models/people.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { PersonServiceService } from 'src/app/services/person-service.service';
+import { PeopleService } from 'src/app/services/people.service';
 import { GlobalContanst } from 'src/app/shared/globalContanst';
 @Component({
   selector: 'app-people',
@@ -18,11 +19,11 @@ export class PeopleComponent implements OnInit {
   showAdd !:boolean;
   showEdit !:boolean;
   personId !: number;
-  data: any;
+  data: PeopleModel[];
   responseMessage:any;
   AddPersonForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
-  constructor(private formBuilder: FormBuilder, private excelService: ExcelService,private _authService:AuthService,private _peopleService : PersonServiceService , public notificationService : NotificationService) { }
+  constructor(private formBuilder: FormBuilder, private excelService: ExcelService,private _authService:AuthService,private _peopleService : PeopleService , public notificationService : NotificationService) { }
 
   ngOnInit(): void {
 

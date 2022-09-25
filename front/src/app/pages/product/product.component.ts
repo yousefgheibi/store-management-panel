@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductModel } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -13,14 +14,12 @@ import { GlobalContanst } from 'src/app/shared/globalContanst';
 })
 export class ProductComponent implements OnInit {
   
-  dataSource:any;
-  
   searchKey : string | undefined;
   showAdd !:boolean;
   showEdit !:boolean;
   productId !: number;
-  data: any;
-  responseMessage:any;
+  data: ProductModel[] = [];
+  responseMessage:string;
   AddProductForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
   constructor(private formBuilder: FormBuilder,private excelService: ExcelService, private _authService:AuthService, private _productService :ProductService  , public notificationService : NotificationService) { }

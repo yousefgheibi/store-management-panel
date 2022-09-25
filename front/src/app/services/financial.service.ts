@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { IncomeModel } from '../models/income.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,11 @@ export class FinancialService {
   constructor(private _http : HttpClient) { }
 
 
-  add(data:any){
+  add(data:IncomeModel){
     return this._http.post(this.url+'/financial/add',data);
   }
 
-  update(data:any){
+  update(data:IncomeModel){
     return this._http.patch(this.url+'/financial/update',data);
   }
 
