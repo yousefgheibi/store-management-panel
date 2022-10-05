@@ -5,10 +5,63 @@
 .valid-err {
     font-size: 0.6rem;
     color: #ca131f;
-    z-index: 100;
+    // z-index: 100;
 }
 
 .valid {
-    z-index: 999 !important;
+    // z-index: 2 !important;
     position: absolute;
+}
+
+.main{
+	width: 100%;
+	height: 540px;
+	overflow: hidden;
+    background: #fefefe;
+	border-radius: 10px;
+	// box-shadow: 5px 20px 50px #000;
+}
+
+#chk{
+	display: none;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+    padding: 2rem;
+}
+label{
+	color: #32325d;
+	font-size: 1.3rem;
+	justify-content: center;
+	display: flex;
+    margin-top: 20px;
+	margin-bottom: 40px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+
+
+.login{
+	height: 600px;
+	background: #eee;
+	border-radius: 70% / 10%;
+	transform: translateY(-90px);
+	transition: .8s ease-in-out;
+    padding: 2rem;
+    padding-top: 1rem;
+    z-index: 999 !important;
+}
+
+
+#chk:checked ~ .login{
+	transform: translateY(-500px);
+}
+#chk:checked ~ .login label{
+	transform: scale(1);	
+}
+#chk:checked ~ .signup label{
+	transform: scale(.6);
 }

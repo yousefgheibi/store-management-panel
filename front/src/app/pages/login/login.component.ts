@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm !: FormGroup;
   isShowDashboard: Boolean = false;
   user_id !: number;
-  signupForm!: FormGroup;
+  signUpForm!: FormGroup;
   forgotPasswordForm!: FormGroup;
   responseMessage!: string;
   url = environment.apiUrl;
@@ -29,9 +29,23 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: [null, [Validators.required, Validators.pattern(GlobalContanst.emailRegex)]],
       password: [null, [Validators.required]]
      }
-    )
+    );
+    this.signUpForm = this.formbuilder.group(
+      {
+       fname: [null,[Validators.required]],
+       lname: [null,[Validators.required]],
+       phone_number: [null,[Validators.required]],
+       email: [null, [Validators.required, Validators.pattern(GlobalContanst.emailRegex)]],
+       password: [null, [Validators.required]]
+      }
+     )
+
   }
 
+  signup(){
+    console.table(this.signUpForm.value);
+  }
+  
   login(){
       var formData = this.loginForm.value;
     var data = {

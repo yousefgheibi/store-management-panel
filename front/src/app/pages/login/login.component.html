@@ -1,13 +1,13 @@
-<div class="header bg-gradient py-7 py-lg-8">
+<!-- <div class="header bg-gradient py-7 py-lg-8">
     <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
   </svg>
     </div>
 </div>
-<!-- Page content -->
+
 <div class="container mt--8 pb-5">
-    <!-- Table -->
+ 
     <div class="row justify-content-center">
         <div class="col-lg-9 col-11">
             <div class="card shadow border-0">
@@ -52,3 +52,102 @@
         </div>
     </div>
 </div>
+
+
+
+-->
+
+ <div class="container py-5">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-10 col-md-4 main p-0 shadow">  	
+            <input type="checkbox" id="chk" aria-hidden="true">
+                <div class="signup">
+                    <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+                        <label for="chk" aria-hidden="true">ثبت نام</label>
+                        <div class="form-group">
+                            <div class="form-row mb-4">
+                                <div class="col-6">
+                                    <div class="input-group input-group">
+                                        <input class="form-control" autocomplete="off" formControlName="fname" placeholder="نام" type="text">
+                                    </div>
+                                    <div class="text-right valid" *ngIf="signUpForm.controls['fname'].touched && signUpForm.controls['fname'].invalid">
+                                        <span class="valid-err" *ngIf="signUpForm.controls['fname'].errors?.['required']">این قسمت اجباری است.</span>
+                                    </div>
+                                </div>
+                                  <div class="col-6">
+                                    <div class="input-group input-group">
+                                        <input class="form-control" autocomplete="off" formControlName="lname" placeholder="نام خانوادگی" type="text">
+                                    </div>
+                                    <div class="text-right valid" *ngIf="signUpForm.controls['lname'].touched && signUpForm.controls['lname'].invalid">
+                                        <span class="valid-err" *ngIf="signUpForm.controls['lname'].errors?.['required']">این قسمت اجباری است.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-4">
+                                <div class="col-12">
+                                    <div class="input-group input-group">
+                                        <input class="form-control" autocomplete="off" formControlName="phone_number" placeholder="شماره موبایل" type="text">
+                                    </div>
+                                    <div class="text-right valid" *ngIf="signUpForm.controls['phone_number'].touched && signUpForm.controls['phone_number'].invalid">
+                                        <span class="valid-err" *ngIf="signUpForm.controls['phone_number'].errors?.['required']">این قسمت اجباری است.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-4">
+                                <div class="col-12">
+                                    <div class="input-group input-group">
+                                        <input class="form-control" autocomplete="off" formControlName="email" placeholder="ایمیل" type="email">
+                                    </div>
+                                    <div class="text-right valid" *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].invalid">
+                                        <span class="valid-err" *ngIf="signUpForm.controls['email'].errors?.['required']">این قسمت اجباری است.</span>
+                                        <span class="valid-err" *ngIf="signUpForm.controls['email'].errors?.['pattern']">لطفا درست وارد کنید.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col-12">
+                                    <div class="input-group input-group">
+                                        <input class="form-control" autocomplete="off" formControlName="password" placeholder="رمز عبور" type="password">
+                                    </div>
+                                    <div class="text-right valid" *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].invalid">
+                                        <span class="valid-err" *ngIf="signUpForm.controls['password'].errors?.['required']">این قسمت اجباری است.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger w-100" [disabled]="!signUpForm.valid">ثبت نام</button>
+                        </div>
+                    </form>
+                </div>
+    
+                <div class="login">
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <label for="chk" aria-hidden="true">ورود</label>
+                        <div class="form-group">
+                            <div class="input-group input-group">
+                                <input class="form-control" autocomplete="off" formControlName="email" placeholder="ایمیل" type="email">
+                            </div>
+                            <div class="text-right valid" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+                                <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['required']">این قسمت اجباری است.</span>
+                                <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['pattern']">لطفا درست وارد کنید.</span>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <div class="input-group input-group">
+                                <input class="form-control" autocomplete="off" formControlName="password" placeholder="رمز عبور" type="password">
+                            </div>
+                            <div class="text-right valid" *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+                                <span class="valid-err" *ngIf="loginForm.controls['password'].errors?.['required']">این قسمت اجباری است.</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger w-100" [disabled]="!loginForm.valid">ورود</button>
+                        </div>
+                    </form>
+                    <p class="text-right mt-3"><small>فراموشی رمزعبور</small></p>
+                </div>
+        </div>
+        </div>
+ </div>
