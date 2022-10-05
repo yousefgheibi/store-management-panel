@@ -21,8 +21,8 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.getInfo();
     this.updateForm = this.formBuilder.group({
-      fname: [null, [Validators.required]],
-      lname: [null, [Validators.required]],
+      fname: [null, [Validators.required,Validators.pattern(GlobalContanst.persianRegex)]],
+      lname: [null, [Validators.required,Validators.pattern(GlobalContanst.persianRegex)]],
       password: [null, [Validators.required]],
       address: [null, [Validators.required]],
       phone_number: [null, [Validators.required]],

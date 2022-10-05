@@ -18,12 +18,20 @@
                                     <div class="form-group">
                                         <label class="form-control-label">نام</label>
                                         <input type="text" class="form-control form-control" formControlName="fname" required [(ngModel)]="data.fname">
+                                        <div class="text-right valid" *ngIf="updateForm.controls['fname'].touched && updateForm.controls['fname'].invalid">
+                                            <span class="valid-err" *ngIf="updateForm.controls['fname'].errors?.['required']">این قسمت اجباری است.</span>
+                                            <span class="valid-err" *ngIf="updateForm.controls['fname'].errors?.['pattern']">لطفا درست وارد کنید.</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label">نام خانوادگی</label>
                                         <input type="text" class="form-control form-control" formControlName="lname" required [(ngModel)]="data.lname">
+                                        <div class="text-right valid" *ngIf="updateForm.controls['lname'].touched && updateForm.controls['lname'].invalid">
+                                            <span class="valid-err" *ngIf="updateForm.controls['lname'].errors?.['required']">این قسمت اجباری است.</span>
+                                            <span class="valid-err" *ngIf="updateForm.controls['lname'].errors?.['pattern']">لطفا درست وارد کنید.</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -32,12 +40,18 @@
                                     <div class="form-group">
                                         <label class="form-control-label">شماره تلفن</label>
                                         <input type="text" class="form-control form-control" formControlName="phone_number" required [(ngModel)]="data.phone_number">
+                                        <div class="text-right valid" *ngIf="updateForm.controls['phone_number'].touched && updateForm.controls['phone_number'].invalid">
+                                            <span class="valid-err" *ngIf="updateForm.controls['phone_number'].errors?.['required']">این قسمت اجباری است.</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label">رمز عبور</label>
                                         <input type="text" class="form-control form-control" formControlName="password" required [(ngModel)]="data.password">
+                                        <div class="text-right valid" *ngIf="updateForm.controls['password'].touched && updateForm.controls['password'].invalid">
+                                            <span class="valid-err" *ngIf="updateForm.controls['password'].errors?.['required']">این قسمت اجباری است.</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -51,6 +65,9 @@
                                     <div class="form-group">
                                         <label class="form-control-label">آدرس</label>
                                         <input class="form-control form-control" formControlName="address" required [(ngModel)]="data.address" type="text">
+                                        <div class="text-right valid" *ngIf="updateForm.controls['address'].touched && updateForm.controls['address'].invalid">
+                                            <span class="valid-err" *ngIf="updateForm.controls['address'].errors?.['required']">این قسمت اجباری است.</span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -60,12 +77,15 @@
                                     <div class="form-group">
                                         <label class="form-control-label">کد پستی</label>
                                         <input type="number" class="form-control form-control" formControlName="postal_code" required [(ngModel)]="data.postal_code">
+                                        <div class="text-right valid" *ngIf="updateForm.controls['postal_code'].touched && updateForm.controls['postal_code'].invalid">
+                                            <span class="valid-err" *ngIf="updateForm.controls['postal_code'].errors?.['required']">این قسمت اجباری است.</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="text-left">
-                            <button type="submit" [disabled]="!updateForm.dirty && !updateForm.valid" class="btn btn-danger mt-3">
+                            <button type="submit" [disabled]="!updateForm.valid" class="btn btn-danger mt-3">
                                 به روز رسانی
                                 </button>
                         </div>

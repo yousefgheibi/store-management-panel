@@ -128,3 +128,13 @@
     border: transparent !important;
  }
  
+ .valid-err {
+    font-size: 0.6rem;
+    color: #ca131f;
+    // z-index: 100;
+}
+
+.valid {
+    // z-index: 2 !important;
+    position: absolute;
+}
