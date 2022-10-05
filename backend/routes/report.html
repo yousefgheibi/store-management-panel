@@ -10,9 +10,6 @@
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-        }
-        
-        body {
             position: relative;
             margin: 0 auto;
             padding: 20px;
@@ -21,6 +18,9 @@
             font-size: 12px;
         }
         
+        h2{
+            font-size: 22px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -51,7 +51,7 @@
         }
         
         table td {
-            padding: 20px;
+            padding: 0px;
             text-align: right;
         }
         
@@ -71,23 +71,22 @@
         }
         
         P {
-            font-size: 15px;
+            font-size: 13px;
         }
     </style>
 </head>
 
 <body>
     <div class="row">
-        <div class="col-12" style="text-align: center;padding-top: 3rem;">
-            <h1 class="font-weight-bold"> صورتحساب فروش کالا و خدمات</h1>
-            <h5 class="font-weight-bold">(نرم افزار حسابداری یارا)</h5>
+        <div class="col-12" style="text-align: center;padding-top: 5rem;padding-bottom: 2rem;">
+            <h2 class="font-weight-bold"> صورتحساب فروش کالا و خدمات</h2>
         </div>
     </div>
     <div class="row">
         <table>
             <tr>
                 <td>
-                    <p>نام شخص حقیق / حقوقی:
+                    <p>نام شخص حقیقی / حقوقی:
                         <%= name %>
                     </p>
                 </td>
@@ -165,7 +164,7 @@
                         </tr>
             </tbody>
         </table>
-        <table style="margin-top: 80px">
+        <table style="margin-top: 200px">
             <tr>
                 <td colspan="3" style="text-align:center;">مهر و امضا فروشنده</td>
                 <td colspan="3" style="text-align:center;">مهر و امضا خریدار</td>
