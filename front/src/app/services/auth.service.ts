@@ -17,6 +17,13 @@ export class AuthService {
     })
   }
 
+
+  signup(data :any){
+    return this._http.post(this.url+'/user/signup',data,{
+      // headers : new HttpHeaders().set('Content-Type','application/json')
+    })
+  }
+
   isLogined(){
     return localStorage.getItem('token') !=null;
   

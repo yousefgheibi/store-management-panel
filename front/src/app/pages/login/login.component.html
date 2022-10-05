@@ -86,7 +86,7 @@
                             <div class="form-row mb-4">
                                 <div class="col-12">
                                     <div class="input-group input-group">
-                                        <input class="form-control" autocomplete="off" formControlName="phone_number" placeholder="شماره موبایل" type="text">
+                                        <input class="form-control" autocomplete="off" formControlName="phone_number" placeholder="شماره موبایل" type="number">
                                     </div>
                                     <div class="text-right valid" *ngIf="signUpForm.controls['phone_number'].touched && signUpForm.controls['phone_number'].invalid">
                                         <span class="valid-err" *ngIf="signUpForm.controls['phone_number'].errors?.['required']">این قسمت اجباری است.</span>

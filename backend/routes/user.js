@@ -6,6 +6,33 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 
 
+router.post('/signup', (req, res) => {
+    let user = req.body;
+
+    db.query(`select email,password,fname,lname,phone_number from user where email=?`, [user.email], (err, result) => {
+        if (!err) {
+            if (result.length <= 0) {
+                let query = `insert into user(email,password,fname,lname,phone_number) values(?,?,?,?,?)`
+                db.query(query, [user.email, user.password, user.fname , user.lname,user.phone_number], (err, result) => {
+                    if (!err) {
+                        const response = { email: user.email };
+                        const accessToken = jwt.sign(response, process.env.ACCESS_TOKEN, { expiresIn: '8h' });
+                        return res.status(200).json({ message: "ثبت نام موفقیت آمیز بود." ,token: accessToken, id: user.id});
+                    } else {
+                        return res.status(500).json(err);
+                    }
+                })
+            } else {
+                return res.status(400).json({ message: "این ایمیل قبلا ثبت نام کرده است." })
+            }
+        } else {
+            res.status(500).json(err);
+        }
+    })
+})
+
+
+
 router.post('/login', (req, res) => {
     const user = req.body;
     let query = `select * from user where email=?`;
