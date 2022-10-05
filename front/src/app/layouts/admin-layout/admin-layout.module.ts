@@ -13,7 +13,7 @@ import { BuyAndSellComponent } from 'src/app/pages/buy-and-sell/buy-and-sell.com
 import { SupportComponent } from 'src/app/pages/support/support.component';
 import { PersianDatePipe } from 'src/app/pipes/persian-date.pipe';
 import { NewFactorComponent } from 'src/app/pages/new-factor/new-factor.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +21,7 @@ import { NewFactorComponent } from 'src/app/pages/new-factor/new-factor.componen
     FormsModule,
     HttpClientModule,
     NgbModule,
+    NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
   ],

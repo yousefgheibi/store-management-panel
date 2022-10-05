@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit {
   showEdit !:boolean;
   productId !: number;
   data: ProductModel[] = [];
+  p:any;
   responseMessage:string;
   AddProductForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;

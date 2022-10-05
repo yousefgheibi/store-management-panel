@@ -14,6 +14,7 @@ export class BuyAndSellComponent implements OnInit {
 
   searchKey : string | undefined;
   data: any;
+  p: any;
   responseMessage:string;
   constructor(private _authService:AuthService,private excelService: ExcelService, private _billService : BillService,public notificationService:NotificationService) { }
 

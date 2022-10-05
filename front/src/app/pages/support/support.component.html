@@ -41,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <ng-container *ngFor="let item of dataSource; let i=index">
+                            <ng-container *ngFor="let item of dataSource | paginate: { itemsPerPage: 5, currentPage: p }; let i=index">
                                 <tr class="tid-data-row">
                                     <th scope="row">
                                         {{i+1}}
@@ -69,6 +69,12 @@
                             </ng-container>
                         </tbody>
                     </table>
+                    <pagination-controls *ngIf="dataSource.length > 4"
+                        (pageChange)="p = $event"
+                        previousLabel=""
+                        nextLabel=""
+                        >
+                </pagination-controls>
                     <ng-container *ngIf="dataSource.length === 0">
                         <div class="text-center p-5 w-100">
                             <img src="../../../assets/img/loading.gif" height="100px">

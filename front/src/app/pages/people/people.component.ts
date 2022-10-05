@@ -19,6 +19,7 @@ export class PeopleComponent implements OnInit {
   showAdd !:boolean;
   showEdit !:boolean;
   personId !: number;
+  p: any;
   data: PeopleModel[];
   responseMessage:any;
   AddPersonForm !: FormGroup;

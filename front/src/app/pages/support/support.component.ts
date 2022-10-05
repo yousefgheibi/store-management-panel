@@ -14,6 +14,7 @@ export class SupportComponent implements OnInit {
   dataSource : SupportModel[] = [];
   searchKey : string | undefined;
   responseMessage: any;
+  p: any;
   AddTiketForm !: FormGroup;
   @ViewChild('closebutton') closebutton : any;
   constructor(private _authService:AuthService, private formBuilder : FormBuilder,private _tiketService : TiketService,private notificationService:NotificationService) { }
