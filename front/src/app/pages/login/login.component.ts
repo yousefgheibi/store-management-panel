@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
     this.signUpForm = this.formbuilder.group(
       {
-       fname: [null,[Validators.required]],
-       lname: [null,[Validators.required]],
+       fname: [null,[Validators.required ,Validators.pattern(GlobalContanst.persianRegex)]],
+       lname: [null,[Validators.required ,Validators.pattern(GlobalContanst.persianRegex)]],
        phone_number: [null,[Validators.required]],
        email: [null, [Validators.required, Validators.pattern(GlobalContanst.emailRegex)]],
        password: [null, [Validators.required]]

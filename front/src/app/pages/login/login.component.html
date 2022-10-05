@@ -72,6 +72,7 @@
                                     </div>
                                     <div class="text-right valid" *ngIf="signUpForm.controls['fname'].touched && signUpForm.controls['fname'].invalid">
                                         <span class="valid-err" *ngIf="signUpForm.controls['fname'].errors?.['required']">این قسمت اجباری است.</span>
+                                        <span class="valid-err" *ngIf="signUpForm.controls['fname'].errors?.['pattern']">لطفا درست وارد کنید.</span>
                                     </div>
                                 </div>
                                   <div class="col-6">
@@ -80,6 +81,7 @@
                                     </div>
                                     <div class="text-right valid" *ngIf="signUpForm.controls['lname'].touched && signUpForm.controls['lname'].invalid">
                                         <span class="valid-err" *ngIf="signUpForm.controls['lname'].errors?.['required']">این قسمت اجباری است.</span>
+                                        <span class="valid-err" *ngIf="signUpForm.controls['lname'].errors?.['pattern']">لطفا درست وارد کنید.</span>
                                     </div>
                                 </div>
                             </div>
