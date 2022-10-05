@@ -7,8 +7,16 @@ let path = require('path');
 var fs = require('fs');
 var uuid = require('uuid');
 
+function generateUID() {
+    var firstPart = (Math.random() * 46656) | 0;
+    var secondPart = (Math.random() * 46656) | 0;
+    firstPart = ("000" + firstPart.toString(36)).slice(-3);
+    secondPart = ("000" + secondPart.toString(36)).slice(-3);
+    return firstPart + secondPart;
+}
+
 router.post('/generateReport', (req, res) => {
-    const generatedUuid = uuid.v4();
+    const generatedUuid = generateUID();
     const orderDetails = req.body;
     var productDetailsReport = JSON.parse(orderDetails.productDetails);
 
