@@ -1,61 +1,6 @@
 <div class="header bg-gradient pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
         <div class="header-body">
-            <!-- Card stats -->
-            <!-- <div class="row">
-                <div class="col-xl-4 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">اشخاص</h5>
-                                    <span class="h3 mb-0">{{people_size}}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                        <i class="fa fa-users"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">کالا</h5>
-                                    <span class="h3 mb-0">{{product_size}}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-pie"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">فاکتور</h5>
-                                    <span class="h5 mb-0">{{factor_size}}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-bar"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
             <div class="row">
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
@@ -63,7 +8,8 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-3">فروش 30 روزه</h5>
-                                    <span class="h5 mb-0">{{totalSellMonth | number }} تومان</span>
+                                    <span *ngIf="totalSellMonth" class="h5 mb-0">{{totalSellMonth | number }} تومان</span>
+                                    <span *ngIf="!totalSellMonth" class="h5 mb-0">0 تومان</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -80,7 +26,8 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-3">خرید 30 روزه</h5>
-                                    <span class="h5 mb-0">{{totalBuyMonth | number }} تومان</span>
+                                    <span *ngIf="totalBuyMonth" class="h5 mb-0">{{totalBuyMonth | number }} تومان</span>
+                                    <span *ngIf="!totalBuyMonth" class="h5 mb-0">0 تومان</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -97,7 +44,8 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-3">فروش یکساله</h5>
-                                    <span class="h5 mb-0">{{totalSellYear | number }} تومان</span>
+                                    <span *ngIf="totalSellYear" class="h5 mb-0">{{totalSellYear | number }} تومان</span>
+                                    <span *ngIf="!totalSellYear" class="h5 mb-0">0 تومان</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -115,7 +63,8 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-3">خرید یکساله</h5>
-                                    <span class="h5 mb-0">{{totalBuyYear | number }} تومان</span>
+                                    <span *ngIf="totalBuyYear" class="h5 mb-0">{{totalBuyYear | number }} تومان</span>
+                                    <span *ngIf="!totalBuyYear" class="h5 mb-0">0 تومان</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -156,6 +105,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngIf="productdata.length !== 0">
                             <tr *ngFor="let item of productdata.slice(0,3); let i = index">
                                 <th scope="row">
                                     {{i+1}}
@@ -167,8 +117,14 @@
                                 <td>{{item.price | currency: ' ' :'symbol-narrow':'4.0'}} تومان </td>
                                 <td>{{item.stock}}</td>
                             </tr>
+                        </ng-container>
                         </tbody>
                     </table>
+                    <ng-container *ngIf="productdata.length === 0">
+                        <div class="text-center p-5 w-100">
+                            <img src="../../../assets/img/loading.gif" height="100px">
+                        </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
@@ -195,7 +151,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <ng-container *ngFor="let item of financdata.slice(0,3); let i=index">
+                            <ng-container  *ngFor="let item of financdata.slice(0,3); let i=index">
                                 <tr class="tid-data-row">
                                     <th scope="row">
                                         {{i+1}}
@@ -216,6 +172,11 @@
                             </ng-container>
                         </tbody>
                     </table>
+                    <ng-container *ngIf="financdata.length === 0">
+                        <div class="text-center p-5 w-100">
+                                <img src="../../../assets/img/loading.gif" height="100px">
+                        </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
@@ -256,6 +217,11 @@
                             </ng-container>
                         </tbody>
                     </table>
+                    <ng-container *ngIf="tiketdata.length === 0">
+                        <div class="text-center p-5 w-100">
+                                <img src="../../../assets/img/loading.gif" height="100px">
+                        </div>
+                    </ng-container>
                 </div>
 
             </div>

@@ -28,7 +28,7 @@
                             <h3 class="mb-0">لیست کالا و خدمات</h3>
                         </div>
                         <div class="col text-left">
-                            <a class="icon icon-shape" (click)="getCSV()"><i class="fa fa-file-excel text-success" aria-hidden="true"></i></a>
+                            <button class="icon icon-shape" [disabled]="data.length === 0" (click)="getCSV()"><i class="fa fa-file-excel text-success" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
@@ -64,6 +64,11 @@
                             </tr>
                         </tbody>
                     </table>
+                    <ng-container *ngIf="data.length === 0">
+                        <div class="text-center p-5 w-100">
+                            <img src="../../../assets/img/loading.gif" height="100px">
+                        </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
