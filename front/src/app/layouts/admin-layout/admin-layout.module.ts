@@ -14,6 +14,7 @@ import { SupportComponent } from 'src/app/pages/support/support.component';
 import { PersianDatePipe } from 'src/app/pipes/persian-date.pipe';
 import { NewFactorComponent } from 'src/app/pages/new-factor/new-factor.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { CreditCardDirective } from 'src/app/directive/credit-card.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,7 +35,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     IncomeAndExpensesComponent,
     BuyAndSellComponent,
     SupportComponent,
-    PersianDatePipe
+    PersianDatePipe,
+    CreditCardDirective
   ]
 })
 
