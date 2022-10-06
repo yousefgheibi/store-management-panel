@@ -138,3 +138,18 @@
     // z-index: 2 !important;
     position: absolute;
 }
+
+
+
+ ::-webkit-scrollbar {
+    width: 3px;
+    height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #676767;
+}
+
+::-webkit-scrollbar-track {
+    background: #F4F6FB;
+}

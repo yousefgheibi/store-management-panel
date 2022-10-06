@@ -5,7 +5,7 @@
 
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
-            <li class="nav-item" ngbDropdown placement="bottom-right">
+            <li class="nav-item" ngbDropdown #myDrop="ngbDropdown" placement="bottom-right">
                 <a class="nav-link pr-0" role="button" ngbDropdownToggle>
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
@@ -17,15 +17,16 @@
                     </div>
                 </a>
                 <div class="dropdown-menu-arrow dropdown-menu-left" ngbDropdownMenu>
-                    <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+                    <a (click)="goToProfile();$event.stopPropagation(); myDrop.close();" class="dropdown-item" ngbDropdownItem>
                         <span>حساب کاربری</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a (click)="logout()" class="dropdown-item">
+                    <a (click)="logout();$event.stopPropagation(); myDrop.close();" class="dropdown-item" ngbDropdownItem>
                         <span>خروج</span>
                     </a>
                 </div>
             </li>
         </ul>
     </div>
+
 </nav>
